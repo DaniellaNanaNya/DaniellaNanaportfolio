@@ -1,0 +1,1069 @@
+/* ============================================================
+   PORTFOLIO BTS SIO SISR — NETFLIX STYLE
+   style.css — Feuille de styles principale
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ── Variables ── */
+:root {
+  --black:       #141414;
+  --red:         #E50914;
+  --red-hover:   #F40612;
+  --white:       #FFFFFF;
+  --gray-1:      #808080;
+  --gray-2:      #2F2F2F;
+  --gray-3:      #1A1A1A;
+  --nav-height:  68px;
+  --card-radius: 4px;
+  --transition:  0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; width: 100%; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  background: transparent;
+  transition: background 0.4s ease;
+}
+
+.navbar.scrolled,
+.navbar.dark {
+  background: var(--black);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.navbar.scrolled::before { opacity: 0; }
+
+/* Logo */
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--red);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.nav-logo span { color: var(--white); }
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 1;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--red);
+  transition: width var(--transition);
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--white); }
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+/* Hamburger (mobile) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--white);
+  transition: var(--transition);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 4% 8%;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(20,20,20,0.9) 40%, transparent 100%),
+    linear-gradient(to top,   rgba(20,20,20,1)   10%, transparent 60%),
+    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80') center/cover no-repeat;
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  animation: heroFadeIn 1s ease both;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.hero-badge::before {
+  content: '';
+  display: block;
+  width: 30px; height: 2px;
+  background: var(--red);
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 4px 20px rgba(0,0,0,0.6);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #e5e5e5;
+  margin-bottom: 0.75rem;
+  font-weight: 300;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.hero-meta .year { color: var(--red); font-weight: 700; }
+.hero-meta .dot  { width: 4px; height: 4px; border-radius: 50%; background: #555; }
+
+.hero-desc {
+  font-size: 1rem;
+  color: #ccc;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.7rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--black);
+}
+.btn-primary:hover {
+  background: rgba(255,255,255,0.75);
+}
+
+.btn-secondary {
+  background: rgba(109,109,110,0.7);
+  color: var(--white);
+  backdrop-filter: blur(4px);
+}
+.btn-secondary:hover {
+  background: rgba(109,109,110,0.5);
+}
+
+.btn-red {
+  background: var(--red);
+  color: var(--white);
+}
+.btn-red:hover {
+  background: var(--red-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(229,9,20,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.btn-outline:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.1);
+}
+
+.btn i { font-size: 1.2em; }
+
+/* ============================================================
+   SECTION LABELS (style Netflix)
+   ============================================================ */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 4%;
+  margin-bottom: 0.75rem;
+}
+
+.section-label h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e5e5e5;
+}
+
+.section-label .see-all {
+  font-size: 0.8rem;
+  color: var(--red);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: var(--transition);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.row-section:hover .see-all {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   ROW SECTION (Slider Netflix)
+   ============================================================ */
+.row-section {
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.row-track {
+  display: flex;
+  gap: 6px;
+  padding: 1.5rem 4%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.row-track::-webkit-scrollbar { display: none; }
+
+/* ── Scroll arrows ── */
+.row-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 90%;
+  background: linear-gradient(to right, rgba(20,20,20,0.7), rgba(20,20,20,0.9));
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.row-arrow.left  { left: 0; background: linear-gradient(to right, rgba(20,20,20,0.9), transparent); }
+.row-arrow.right { right: 0; background: linear-gradient(to left,  rgba(20,20,20,0.9), transparent); }
+.row-section:hover .row-arrow { opacity: 1; }
+.row-arrow:hover { background: rgba(20,20,20,0.95); }
+
+/* ============================================================
+   CARDS — NETFLIX HOVER EFFECT ★
+   ============================================================ */
+.card {
+  position: relative;
+  flex-shrink: 0;
+  width: 220px;
+  border-radius: var(--card-radius);
+  overflow: visible;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              z-index 0s 0.35s;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: scale(1.35) translateY(-10%);
+  z-index: 100;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              z-index 0s 0s;
+}
+
+/* Décalage des premières et dernières cartes */
+.row-track .card:first-child:hover { transform-origin: left center; }
+.row-track .card:last-child:hover  { transform-origin: right center; }
+
+.card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: var(--gray-2);
+}
+
+.card-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: filter 0.35s ease;
+}
+
+.card-thumb .thumb-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(255,255,255,0.2);
+  transition: var(--transition);
+}
+
+/* Overlay reveal au hover */
+.card-overlay {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: var(--gray-3);
+  border-radius: 0 0 var(--card-radius) var(--card-radius);
+  padding: 0.75rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+  pointer-events: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-top: none;
+}
+.card:hover .card-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+.card-btn.play {
+  background: var(--white);
+  color: var(--black);
+}
+.card-btn.play:hover  { background: #e5e5e5; }
+.card-btn.info {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.6);
+}
+.card-btn.info:hover  { border-color: var(--white); }
+.card-btn.add {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.6);
+}
+.card-btn.add:hover   { border-color: var(--white); }
+
+.card-btn-spacer { flex: 1; }
+
+.card-level {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #46d369;
+  border: 1px solid #46d369;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.card-meta {
+  font-size: 0.72rem;
+  color: #aaa;
+  margin-bottom: 0.4rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.card-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-size: 0.65rem;
+  background: rgba(255,255,255,0.1);
+  color: #ccc;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+/* Card title (visible tout le temps sur la thumb) */
+.card-title-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 0.75rem 0.5rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  border-radius: 0 0 var(--card-radius) var(--card-radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CARD PORTRAIT (Affiche format film)
+   ============================================================ */
+.card-portrait {
+  width: 160px;
+}
+
+.card-portrait .card-thumb {
+  aspect-ratio: 2/3;
+}
+
+/* ============================================================
+   EPISODE CARD (Parcours)
+   ============================================================ */
+.episode-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--card-radius);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background var(--transition);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.episode-card:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.episode-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #555;
+  min-width: 40px;
+  text-align: center;
+  line-height: 1;
+  align-self: center;
+}
+
+.episode-thumb {
+  flex-shrink: 0;
+  width: 160px;
+  aspect-ratio: 16/9;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: var(--gray-2);
+  position: relative;
+}
+.episode-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.episode-thumb .play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: var(--transition);
+}
+.episode-card:hover .play-overlay { opacity: 1; }
+
+.episode-info { flex: 1; }
+.episode-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+}
+.episode-title { font-size: 1rem; font-weight: 600; }
+.episode-date  { font-size: 0.8rem; color: #aaa; }
+.episode-desc  { font-size: 0.85rem; color: #aaa; line-height: 1.5; }
+
+.episode-skills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+.skill-chip {
+  font-size: 0.68rem;
+  background: rgba(229,9,20,0.15);
+  color: var(--red);
+  border: 1px solid rgba(229,9,20,0.3);
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   SECTION HERO-BANNER (sous-pages)
+   ============================================================ */
+.page-hero {
+  position: relative;
+  height: 45vh;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 4% 3rem;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  transition: filter 0.5s;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--black) 0%, transparent 50%),
+    linear-gradient(to right, rgba(20,20,20,0.7) 0%, transparent 60%);
+}
+
+.page-hero-content { position: relative; z-index: 2; }
+.page-hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.page-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   SEASON SELECTOR (Parcours)
+   ============================================================ */
+.season-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 4%;
+  margin-bottom: 1.5rem;
+}
+
+.season-btn {
+  background: var(--gray-2);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.4rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.season-btn.active,
+.season-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+/* ============================================================
+   COMPÉTENCES — SKILL BAR
+   ============================================================ */
+.skill-bar-wrap {
+  margin-bottom: 0.8rem;
+}
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+.skill-bar-track {
+  height: 4px;
+  background: var(--gray-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--red), #ff6b6b);
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.skill-bar-fill.animated { width: var(--pct); }
+
+/* ============================================================
+   CONTACT — PROFIL STYLE
+   ============================================================ */
+.profiles-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 4%;
+  justify-content: center;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.profile-card:hover { transform: scale(1.05); }
+
+.profile-avatar {
+  width: 120px; height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color var(--transition);
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--red);
+}
+.profile-card:hover .profile-avatar { border-color: var(--white); }
+
+.profile-name { font-size: 1rem; color: #808080; transition: var(--transition); }
+.profile-card:hover .profile-name { color: var(--white); }
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 4%;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  color: #808080;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--gray-2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  color: var(--white);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--white);
+  background: rgba(47,47,47,0.8);
+}
+.form-group textarea { resize: vertical; min-height: 130px; }
+
+/* ============================================================
+   SYNTHÈSE (Clean PDF page)
+   ============================================================ */
+.synthese-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.synthese-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ============================================================
+   INFO MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal {
+  background: #181818;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+.modal-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+.modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.modal-thumb-gradient {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(transparent, #181818);
+}
+.modal-thumb-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-body { padding: 1.5rem 2rem 2rem; }
+.modal-body h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+.modal-meta { color: #aaa; font-size: 0.9rem; margin-bottom: 1rem; }
+.modal-desc { line-height: 1.7; color: #ccc; margin-bottom: 1.5rem; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  padding: 4rem 4% 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 3rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.footer-col h4 {
+  font-size: 0.9rem;
+  color: #808080;
+  margin-bottom: 1rem;
+}
+.footer-col a, .footer-col p {
+  font-size: 0.85rem;
+  color: #808080;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color var(--transition);
+}
+.footer-col a:hover { color: var(--white); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: #555;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--red);
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--red);
+  z-index: 2000;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ============================================================
+   MATURITY BADGE
+   ============================================================ */
+.maturity {
+  display: inline-block;
+  border: 1px solid #aaa;
+  padding: 1px 5px;
+  font-size: 0.72rem;
+  color: #aaa;
+}
+
+/* ============================================================
+   TOAST NOTIFICATION
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: #e5e5e5;
+  color: var(--black);
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 3000;
+  pointer-events: none;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+.page-loader.hidden { opacity: 0; pointer-events: none; }
+.loader-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: var(--red);
+  animation: loaderPulse 1s ease-in-out infinite;
+}
+@keyframes loaderPulse {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.container { padding: 0 4%; }
+
+.text-red   { color: var(--red); }
+.text-gray  { color: #808080; }
+.text-muted { color: #555; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+.pt-nav { padding-top: var(--nav-height); }
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin: 2rem 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.badge-red    { background: rgba(229,9,20,0.2); color: var(--red); border: 1px solid var(--red); }
+.badge-green  { background: rgba(70,211,105,0.15); color: #46d369; border: 1px solid #46d369; }
+.badge-blue   { background: rgba(30,130,255,0.15); color: #5599ff; border: 1px solid #5599ff; }
+.badge-orange { background: rgba(255,160,40,0.15); color: #ffa028; border: 1px solid #ffa028; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .nav-links    { display: none; flex-direction: column; position: absolute; top: var(--nav-height); left: 0; right: 0; background: var(--black); padding: 1.5rem 4%; gap: 1rem; }
+  .nav-links.open { display: flex; }
+  .nav-toggle   { display: flex; }
+  .hero         { min-height: 75vh; padding-bottom: 4rem; }
+  .card         { width: 160px; }
+  .card-portrait{ width: 120px; }
+  .episode-thumb{ width: 120px; }
+}
+
+@media (max-width: 600px) {
+  .hero-buttons { flex-direction: column; align-items: flex-start; }
+  .btn          { padding: 0.6rem 1.4rem; font-size: 0.9rem; }
+  .card         { width: 140px; }
+  .episode-card { flex-direction: column; }
+  .episode-thumb{ width: 100%; }
+  .episode-num  { display: none; }
+  .profiles-grid{ gap: 1.5rem; }
+  .modal-body   { padding: 1rem 1.2rem 1.5rem; }
+}
+
+/* ============================================================
+   ANIMATIONS D'ENTRÉE AU SCROLL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.certifications-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  flex-wrap: wrap;
+}
+
+.cert-card1 img {
+  width: 300px;      
+  height: 180px;    
+  object-fit: cover;  
+  border-radius: 20px; 
+  border: 3px solid #ffffff; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}

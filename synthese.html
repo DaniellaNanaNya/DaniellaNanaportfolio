@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synthèse — Portfolio BTS SIO SISR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .synth-hero {
+      padding: calc(var(--nav-height) + 3rem) 4% 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .synth-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 4% 4rem;
+    }
+    .synth-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .synth-stat {
+      background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .synth-stat:hover {
+      border-color: rgba(229,9,20,0.3);
+      transform: translateY(-3px);
+    }
+    .synth-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .synth-stat-label {
+      font-size: 0.85rem;
+      color: #808080;
+    }
+
+    .synth-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .synth-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: rgba(229,9,20,0.1);
+      color: var(--red);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(229,9,20,0.2);
+    }
+    .synth-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: #ccc;
+    }
+    .synth-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 4px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 2px solid var(--black);
+    }
+    .timeline-date {
+      font-size: 0.78rem;
+      color: var(--red);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: #808080;
+      line-height: 1.5;
+    }
+
+    /* Print styles */
+    @media print {
+      .navbar, .page-loader, .scroll-progress, .btn-red, .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .synth-stat { border: 1px solid #ddd; }
+      .synth-stat-num { color: #E50914; }
+      .synth-table th { background: #f5f5f5; color: #E50914; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-loader" id="loader"><div class="loader-logo">SISR</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="navbar dark" id="navbar">
+  <a href="index.html" class="nav-logo">D<span>NANA</span>NYA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="synthese.html" class="active">Synthèse</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Hero -->
+<div class="synth-hero">
+  <p style="font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">
+    <i class="fas fa-file-alt"></i> &nbsp; Document de synthèse
+  </p>
+  <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);line-height:1;margin-bottom:1rem;">
+    Synthèse BTS<br>SIO SISR
+  </h1>
+  <p style="color:#aaa;max-width:600px;font-size:1rem;line-height:1.7;margin-bottom:1.5rem;">
+    Bilan complet de ma formation en Services Informatiques aux Organisations,
+    option Solutions d'Infrastructure, Systèmes et Réseaux (SISR).
+    Promotion 2025-2027.
+  </p>
+
+
+ <div style="display:flex;gap:0.75rem;flex-wrap:wrap;" class="no-print"> 
+  <a href="Tableau_de_synthese.pdf" target="_blank" class="btn btn-outline">
+    <i class="fas fa-download"></i> Télécharger le tableau de synthèse
+  </a>
+
+  <a href="CV_Aout2026.pdf" target="_blank" class="btn btn-outline">
+    <i class="fas fa-download"></i> Télécharger CV
+  </a>
+</div>
+
+</div>
+</div>
+
+<div class="synth-section">
+
+ 
+
+  <hr class="divider" />
+
+  <!-- Identité -->
+  <div class="synthese-card reveal">
+    <h3><i class="fas fa-user"></i> Identité &amp; Formation</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+      <div>
+        <p style="font-size:0.78rem;color:#808080;margin-bottom:2px;">Nom complet</p>
+        <p style="font-weight:600;">Daniella NANA NYA</p>
+      </div>
+      <div>
+        <p style="font-size:0.78rem;color:#808080;margin-bottom:2px;">Formation</p>
+        <p style="font-weight:600;">BTS SIO - Option SISR</p>
+      </div>
+      <div>
+        <p style="font-size:0.78rem;color:#808080;margin-bottom:2px;">Établissement</p>
+        <p style="font-weight:600;">Lycée Turgot - Paris</p>
+      </div>
+      <div>
+        <p style="font-size:0.78rem;color:#808080;margin-bottom:2px;">Promotion</p>
+        <p style="font-weight:600;">2025 – 2027</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Projets tableau -->
+  <div class="synthese-card reveal">
+    <h3><i class="fas fa-film"></i> Projets &amp; TP Significatifs</h3>
+    <table class="synth-table">
+      <thead>
+        <tr><th>Projet</th><th>Catégorie</th><th>Année</th><th>Technologies</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Introduction VLAN &amp; Routage Inter-VLAN</td><td>Réseaux</td><td>1ère</td><td>Cisco IOS, Packet Tracer</td></tr>
+        <tr><td>Administration Linux Debian</td><td>Systèmes</td><td>1ère</td><td>Debian 12, Apache, Bash</td></tr>
+        <tr><td>Analyse réseau Wireshark</td><td>Réseaux · Sécu.</td><td>1ère</td><td>Wireshark, PCAP</td></tr>
+        <tr><td>Scripts PowerShell </td><td>Systèmes</td><td>1ère</td><td>PowerShell</td></tr>
+        <tr><td>GLPI &amp; OCS Inventory</td><td>Helpdesk</td><td>1ème</td><td>GLPI, OCS</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Stages -->
+  <div class="synthese-card reveal">
+    <h3><i class="fas fa-building"></i> Expériences en Entreprise</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;">
+      <div style="padding:1rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid rgba(229,9,20,0.2);">
+        <p style="font-size:0.75rem;color:var(--red);font-weight:700;margin-bottom:0.25rem;">STAGE 1ÈRE ANNÉE · Mai-Juillet 2026</p>
+        <p style="font-weight:700;margin-bottom:0.25rem;">J&A Business Consulting</p>
+        <p style="font-size:0.82rem;color:#808080;margin-bottom:0.5rem;">IT Consulting</p>
+        <p style="font-size:0.85rem;color:#ccc;"></p>
+      </div>
+      <div style="padding:1rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid rgba(229,9,20,0.2);">
+        <p style="font-size:0.75rem;color:var(--red);font-weight:700;margin-bottom:0.25rem;">STAGE 2ÈME ANNÉE · à venir</p>
+        <p style="font-weight:700;margin-bottom:0.25rem;">[Nom de l'entreprise]</p>
+        <p style="font-size:0.82rem;color:#808080;margin-bottom:0.5rem;">Réseau/Infrastructure</p>
+        <p style="font-size:0.85rem;color:#ccc;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="synthese-card reveal">
+    <h3><i class="fas fa-history"></i> Chronologie</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Septembre 2025</div>
+        <div class="timeline-title">Entrée en BTS SIO SISR</div>
+        <div class="timeline-desc">Début de la formation au Lycée Turgot. Découverte des outils et environnements SISR.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Oct 2025 – Mai 2026</div>
+        <div class="timeline-title">1ère année - Fondamentaux</div>
+        <div class="timeline-desc">Réseaux Cisco, Windows Server, Linux Debian, virtualisation introductive.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Mai 2026</div>
+        <div class="timeline-title">Stage en entreprise - 8 semaines</div>
+        <div class="timeline-desc">Administration sécurité et mise à disposition d'outils techniques chez J&A Business Consulting.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Sept 2026</div>
+        <div class="timeline-title">2ème année - Approfondissement</div>
+        <div class="timeline-desc">Réseau, Infrastructure, Cybersécurité.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Décembre 2026 - Janvier 2027</div>
+        <div class="timeline-title">Stage en entreprise - 6-8 semaines</div>
+        <div class="timeline-desc">Recherche en cours</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Juin 2027</div>
+        <div class="timeline-title">Examen BTS SIO SISR</div>
+        <div class="timeline-desc">Épreuves écrites et orales du BTS. Présentation du portfolio et des compétences professionnelles.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perspectives -->
+  <div class="synthese-card reveal">
+    <h3><i class="fas fa-rocket"></i> Perspectives &amp; Objectifs</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+      <div style="text-align:center;padding:1rem;">
+        <i class="fas fa-graduation-cap" style="font-size:2rem;color:var(--red);margin-bottom:0.5rem;display:block;"></i>
+        <p style="font-weight:700;margin-bottom:0.25rem;">Licence CNAM puis porsuite d'études à l'étranger</p>
+        <p style="font-size:0.82rem;color:#808080;">Tout domaine de la tech</p>
+      </div>
+      <div style="text-align:center;padding:1rem;">
+        <i class="fas fa-certificate" style="font-size:2rem;color:#ffa028;margin-bottom:0.5rem;display:block;"></i>
+        <p style="font-weight:700;margin-bottom:0.25rem;">Certification CCNA</p>
+        <p style="font-size:0.82rem;color:#808080;">Cisco Certified Network Associate</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /synth-section -->
+
+<footer>
+  <div class="footer-bottom" style="padding:0 4%;">
+    <span>© 2025–2027 NANA NYA Daniella — BTS SIO SISR</span>
+    <span class="no-print"><a href="index.html" style="color:#808080;">← Retour Accueil</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollProgress').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800));
+const obs = new IntersectionObserver(e => e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

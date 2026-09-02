@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Portfolio BTS SIO SISR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .who-section {
+      text-align: center;
+      padding: calc(var(--nav-height) + 3rem) 4% 2rem;
+    }
+    .who-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #808080;
+      margin-bottom: 1rem;
+    }
+    .who-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin-bottom: 0.5rem;
+    }
+    .who-sub {
+      color: #aaa;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Profile avatars (who's watching style) */
+    .profiles-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .profile-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .profile-item:hover { transform: scale(1.08); }
+    .profile-avatar-box {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      border: 2px solid transparent;
+      transition: border-color var(--transition);
+    }
+    .profile-item:hover .profile-avatar-box { border-color: var(--white); }
+    .profile-item span {
+      font-size: 0.88rem;
+      color: #aaa;
+      transition: color var(--transition);
+    }
+    .profile-item:hover span { color: var(--white); }
+
+    /* Contact layout */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 4% 4rem;
+    }
+
+    @media (max-width: 700px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+    }
+
+    .contact-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--card-radius);
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--white);
+      cursor: pointer;
+    }
+    .contact-link-card:hover {
+      border-color: rgba(229,9,20,0.4);
+      background: rgba(229,9,20,0.05);
+      transform: translateX(6px);
+    }
+    .contact-link-card i {
+      font-size: 1.5rem;
+      width: 32px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .contact-link-card .clc-label {
+      font-size: 0.75rem;
+      color: #808080;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .contact-link-card .clc-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* Form */
+    .contact-form-wrap {
+      background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    .contact-form-wrap h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--red);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .submit-feedback {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      color: #46d369;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .submit-feedback.show { display: flex; }
+
+    /* Disponibilité */
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(70,211,105,0.1);
+      border: 1px solid rgba(70,211,105,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      color: #46d369;
+    }
+    .avail-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #46d369;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    /* Social links bottom */
+    .social-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 2rem 4%;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-loader" id="loader"><div class="loader-logo">SISR</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="navbar dark" id="navbar">
+  <a href="index.html" class="nav-logo">D<span>NANA</span>NYA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="synthese.html">Synthèse</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- WHO'S WATCHING -->
+<section class="who-section">
+  <p class="who-eyebrow">Comment souhaitez-vous nous contacter ?</p>
+  <h1 class="who-title">Mon Profil</h1>
+  <p class="who-sub">Choisissez un mode de contact</p>
+
+  <div class="profiles-row">
+
+   
+  
+   <!-- LinkedIn --> 
+<div class="profile-item" onclick="window.open('https://linkedin.com/in/DaniellaNanaNya', '_blank')"> 
+  <div class="profile-avatar-box" style="background:linear-gradient(135deg,#0a1628,#0e76a8);"> 
+    <i class="fab fa-linkedin" style="color:#0A66C2;"></i> 
+  </div> 
+  <span>LinkedIn</span> 
+</div> 
+ 
+<!-- GitHub --> 
+<div class="profile-item" onclick="window.open('https://github.com/DaniellaNanaNya', '_blank')"> 
+  <div class="profile-avatar-box" style="background:linear-gradient(135deg,#0d1117,#161b22);"> 
+    <i class="fab fa-github" style="color:#e5e5e5;"></i> 
+  </div> 
+  <span>GitHub</span> 
+</div>
+  
+    <!-- CV -->
+    <div class="profile-item" onclick="window.open('CV_Aout2026.pdf', '_blank')">
+      <div class="profile-avatar-box" style="background:linear-gradient(135deg,#1a0a00,#3d2000);">
+        <i class="fas fa-file-pdf" style="color:#ffa028;"></i>
+      </div>
+      <span>Télécharger CV</span>
+    </div>
+  
+  </div>
+
+  <!-- Dispo badge -->
+ 
+
+<!-- CONTACT WRAPPER -->
+<div class="contact-wrapper" id="formSection">
+
+  <!-- Infos -->
+  <div class="contact-info-block reveal">
+    <div>
+      <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:0.25rem;">NANA NYA Daniella</h2>
+      <p style="color:#808080;font-size:0.9rem;">Étudiante BTS SIO SISR </p>
+    </div>
+
+    <a href="mailto:daniellanananya@gmail.com" class="contact-link-card">
+      <i class="fas fa-envelope" style="color:var(--red);"></i>
+      <div>
+        <span class="clc-label">Email</span>
+        <span class="clc-value">daniellanananya@gmail.com</span>
+      </div>
+    </a>
+
+    <a href="tel:+330600000000" class="contact-link-card">
+      <i class="fas fa-phone" style="color:#46d369;"></i>
+      <div>
+        <span class="clc-label">Téléphone</span>
+        <span class="clc-value">+33 7 59 55 59 83</span>
+      </div>
+    </a>
+
+    <div class="contact-link-card">
+      <i class="fas fa-map-marker-alt" style="color:#5599ff;"></i>
+      <div>
+        <span class="clc-label">Localisation</span>
+        <span class="clc-value">Île-de-France/Normandie</span>
+      </div>
+    </div>
+
+    <a href="#" class="contact-link-card">
+      <i class="fab fa-linkedin" style="color:#0A66C2;"></i>
+      <div>
+        <span class="clc-label">LinkedIn</span>
+        <span class="clc-value">linkedin.com/in/DaniellaNanaNya</span>
+      </div>
+    </a>
+
+    <a href="#" class="contact-link-card">
+      <i class="fab fa-github" style="color:#e5e5e5;"></i>
+      <div>
+        <span class="clc-label">GitHub</span>
+        <span class="clc-value">github.com/DaniellaNanaNya</span>
+      </div>
+    </a>
+
+    <a href="#" class="contact-link-card">
+      <i class="fas fa-download" style="color:#ffa028;"></i>
+      <div>
+        <span class="clc-label">Mon CV</span>
+        <span class="clc-value">Télécharger (PDF)</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Formulaire -->
+  <div class="contact-form-wrap reveal">
+    <h3><i class="fas fa-paper-plane"></i> &nbsp;Envoyer un message</h3>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">Prénom *</label>
+        <input type="text" id="fname" placeholder="Votre prénom" />
+      </div>
+      <div class="form-group">
+        <label for="lname">Nom *</label>
+        <input type="text" id="lname" placeholder="Votre nom" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" placeholder="votre@email.com" />
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Objet</label>
+      <input type="text" id="subject" placeholder="Proposition de stage, recrutement, question..." />
+    </div>
+
+    <div class="form-group">
+      <label for="msg">Message *</label>
+      <textarea id="msg" placeholder="Votre message..."></textarea>
+    </div>
+
+    <button class="btn btn-red" style="width:100%;justify-content:center;" onclick="submitForm()">
+      <i class="fas fa-paper-plane"></i> &nbsp;Envoyer le message
+    </button>
+
+    <div class="submit-feedback" id="feedback">
+      <i class="fas fa-check-circle"></i>
+      Message envoyé avec succès ! Je vous répondrai dans les meilleurs délais.
+    </div>
+
+    <p style="margin-top:1rem;font-size:0.78rem;color:#555;text-align:center;">
+      * Champs obligatoires · Données non partagées
+    </p>
+  </div>
+
+</div>
+
+
+
+<footer>
+  <div class="footer-bottom" style="padding:0 4%;">
+    <span>© 2025–2027 NANA NYA Daniella — BTS SIO SISR</span>
+    <span><a href="index.html" style="color:#808080;">← Retour Accueil</a></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollProgress').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800));
+const obs = new IntersectionObserver(e => e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function submitForm() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const msg = document.getElementById('msg').value.trim();
+
+  if (!fname || !email || !msg) {
+    showToast('Veuillez remplir les champs obligatoires.');
+    return;
+  }
+
+  // Simulate send
+  const btn = document.querySelector('.btn-red');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
+    btn.style.background = '#46d369';
+    document.getElementById('feedback').classList.add('show');
+    // Reset form
+    ['fname','lname','email','subject','msg'].forEach(id => document.getElementById(id).value = '');
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> &nbsp;Envoyer le message';
+      btn.style.background = '';
+      btn.disabled = false;
+      document.getElementById('feedback').classList.remove('show');
+    }, 4000);
+  }, 1500);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>

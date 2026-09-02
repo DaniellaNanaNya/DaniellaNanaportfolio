@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compétences — Portfolio BTS SIO SISR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .skill-card {
+      flex-shrink: 0;
+      width: 200px;
+      background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--card-radius);
+      padding: 1.5rem 1rem 1.2rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0.35s, box-shadow 0.35s ease;
+      z-index: 1;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--red), #ff6b6b);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .skill-card:hover {
+      transform: scale(1.2) translateY(-8%);
+      z-index: 100;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0s, box-shadow 0.35s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    }
+    .skill-card:hover::before { transform: scaleX(1); }
+
+    .row-track .skill-card:first-child:hover { transform-origin: left center; }
+    .row-track .skill-card:last-child:hover  { transform-origin: right center; }
+
+    .skill-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .skill-card-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .skill-card-level {
+      font-size: 0.7rem;
+      color: #808080;
+      margin-bottom: 0.75rem;
+    }
+    .skill-card-bar {
+      height: 3px;
+      background: var(--gray-2);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .skill-card-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--red), #ff6b6b);
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+    }
+    .skill-card.animated .skill-card-fill { width: var(--pct); }
+
+    .skill-card-tags {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+    }
+    .skill-card:hover .skill-card-tags { opacity: 1; transform: translateY(0); }
+
+    /* Tool grid */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem 4%;
+    }
+    .tool-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 0.5rem;
+      background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .tool-item:hover {
+      background: rgba(229,9,20,0.1);
+      border-color: rgba(229,9,20,0.3);
+      transform: translateY(-4px);
+    }
+    .tool-item i { font-size: 2rem; }
+    .tool-item span { font-size: 0.72rem; color: #aaa; text-align: center; }
+
+    /* Cert cards */
+    .cert-card {
+      flex-shrink: 0;
+      width: 220px;
+      background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--card-radius);
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0.35s;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .cert-card:hover {
+      transform: scale(1.15) translateY(-8%);
+      z-index: 100;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0s;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    }
+    .cert-icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+    }
+    .cert-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .cert-issuer { font-size: 0.75rem; color: #808080; margin-bottom: 0.5rem; }
+    .cert-status { font-size: 0.7rem; }
+  </style>
+</head>
+<body>
+
+<div class="page-loader" id="loader"><div class="loader-logo">SISR</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="navbar dark" id="navbar">
+  <a href="index.html" class="nav-logo">D<span>NANA</span>NYA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="competences.html" class="active">Compétences</a></li>
+    <li><a href="synthese.html">Synthèse</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero pt-nav">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80');"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-eyebrow"><i class="fas fa-layer-group"></i> &nbsp; Mes catégories</p>
+    <h1>Compétences</h1>
+    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+      <span class="badge badge-red">5 Catégories</span>
+      <span class="badge badge-green">SISR Niveau 2</span>
+      <span style="color:#aaa;font-size:0.9rem;">Réseaux · Systèmes · Sécurité · Virtualisation · Scripting</span>
+    </div>
+  </div>
+</div>
+
+<main style="padding-bottom:4rem;">
+
+  
+
+  <!-- ══ RANGÉE 1 : Systèmes ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-server" style="color:#5599ff;margin-right:0.5rem;"></i> Systèmes</h2>
+      <span class="see-all">Voir détails <i class="fas fa-chevron-right"></i></span>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rn2', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rn2',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rn2">
+
+      <div class="skill-card" style="--pct:82%">
+        <span class="skill-card-icon" style="color:#0078D4;"><i class="fab fa-windows"></i></span>
+        <div class="skill-card-name">Windows Server</div>
+        <div class="skill-card-level">82% · Avancé</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">WS 2022</span><span class="card-tag">AD DS</span><span class="card-tag">GPO</span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--pct:75%">
+        <span class="skill-card-icon" style="color:#FCC624;"><i class="fab fa-linux"></i></span>
+        <div class="skill-card-name">Linux Debian</div>
+        <div class="skill-card-level">75% · Intermédiaire</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">Debian 12</span><span class="card-tag">Ubuntu</span><span class="card-tag">SSH</span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--pct:70%">
+        <span class="skill-card-icon" style="color:#46d369;"><i class="fas fa-database"></i></span>
+        <div class="skill-card-name">Active Directory</div>
+        <div class="skill-card-level">70% · Intermédiaire</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">OU</span><span class="card-tag">LDAP</span><span class="card-tag">Kerberos</span>
+        </div>
+      </div>
+
+
+      <div class="skill-card" style="--pct:60%">
+        <span class="skill-card-icon" style="color:#E50914;"><i class="fas fa-print"></i></span>
+        <div class="skill-card-name">GLPI</div>
+        <div class="skill-card-level">60% · Intermédiaire</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">GLPI</span><span class="card-tag">OCS Inventory</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ RANGÉE 2 : Réseaux ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-network-wired" style="color:var(--red);margin-right:0.5rem;"></i> Réseaux</h2>
+      <span class="see-all">Voir détails <i class="fas fa-chevron-right"></i></span>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rn1', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rn1',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rn1">
+
+     
+
+      <div class="skill-card" style="--pct:80%">
+        <span class="skill-card-icon" style="color:#ffa028;"><i class="fas fa-route"></i></span>
+        <div class="skill-card-name">Routage IP</div>
+        <div class="skill-card-level">80% · Avancé</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">OSPF</span><span class="card-tag">RIP</span><span class="card-tag">EIGRP</span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--pct:75%">
+        <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-globe"></i></span>
+        <div class="skill-card-name">TCP/IP & DNS</div>
+        <div class="skill-card-level">75% · Intermédiaire</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">IPv4</span><span class="card-tag">IPv6</span><span class="card-tag">DHCP</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ RANGÉE 3 : Sécurité ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-shield-alt" style="color:#46d369;margin-right:0.5rem;"></i> Sécurité</h2>
+      <span class="see-all">Voir détails <i class="fas fa-chevron-right"></i></span>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rn3', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rn3',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rn3">
+
+
+      <div class="skill-card" style="--pct:60%">
+        <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-user-secret"></i></span>
+        <div class="skill-card-name">Pentest basique</div>
+        <div class="skill-card-level">60% · Débutant</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">Nmap</span><span class="card-tag">Wireshark</span><span class="card-tag">Kali</span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--pct:55%">
+        <span class="skill-card-icon" style="color:#aaa;"><i class="fas fa-key"></i></span>
+        <div class="skill-card-name">EBIOS</div>
+        <div class="skill-card-level">55% · Débutant</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">TLS/SSL</span><span class="card-tag">Let's Encrypt</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ RANGÉE 4 : Virtualisation ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-cube" style="color:#ffa028;margin-right:0.5rem;"></i> Virtualisation &amp; Cloud</h2>
+      <span class="see-all">Voir détails <i class="fas fa-chevron-right"></i></span>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rn4', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rn4',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rn4">
+
+
+      <div class="skill-card" style="--pct:70%">
+        <span class="skill-card-icon" style="color:#183A52;"><i class="fas fa-box"></i></span>
+        <div class="skill-card-name">VirtualBox</div>
+        <div class="skill-card-level">70% · Intermédiaire</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags"><span class="card-tag">OVA</span><span class="card-tag">Snapshot</span></div>
+      </div>
+
+      <div class="skill-card" style="--pct:45%">
+        <span class="skill-card-icon" style="color:#2496ED;"><i class="fab fa-docker"></i></span>
+        <div class="skill-card-name">Windows</div>
+        <div class="skill-card-level">45% · Débutant</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags"><span class="card-tag">Containers</span><span class="card-tag">Dockerfile</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ RANGÉE 5 : Scripting ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-code" style="color:#ffa028;margin-right:0.5rem;"></i> Scripting &amp; Automatisation</h2>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rn5', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rn5',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rn5">
+
+      <div class="skill-card" style="--pct:72%">
+        <span class="skill-card-icon" style="color:#012456;"><i class="fas fa-terminal"></i></span>
+        <div class="skill-card-name">PowerShell</div>
+        <div class="skill-card-level">72% · Avancé</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags"><span class="card-tag">Scripts AD</span><span class="card-tag">Automation</span></div>
+      </div>
+
+      <div class="skill-card" style="--pct:65%">
+        <span class="skill-card-icon" style="color:#3572A5;"><i class="fab fa-python"></i></span>
+        <div class="skill-card-name">Python</div>
+        <div class="skill-card-level">65% · Intermédiaire</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags"><span class="card-tag">Requests</span><span class="card-tag">Paramiko</span></div>
+      </div>
+
+      <div class="skill-card" style="--pct:78%">
+        <span class="skill-card-icon" style="color:#89e051;"><i class="fas fa-terminal"></i></span>
+        <div class="skill-card-name">Bash</div>
+        <div class="skill-card-level">78% · Avancé</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags"><span class="card-tag">Cron</span><span class="card-tag">sed/awk</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Outils ══ -->
+  <section class="reveal" style="margin-bottom:3rem;">
+    <div class="section-label"><h2><i class="fas fa-tools" style="color:#808080;margin-right:0.5rem;"></i> Outils &amp; Logiciels</h2></div>
+    <div class="tool-grid">
+      <div class="tool-item"><i class="fas fa-network-wired" style="color:#E50914;"></i><span>Packet Tracer</span></div>
+      <div class="tool-item"><i class="fas fa-eye" style="color:#1679A8;"></i><span>Wireshark</span></div>
+      <div class="tool-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Github</span></div>
+      <div class="tool-item"><i class="fas fa-code-branch" style="color:#aaa;"></i><span>VS Code</span></div>
+      <div class="tool-item"><i class="fas fa-ticket-alt" style="color:#ffa028;"></i><span>GLPI</span></div>
+    </div>
+  </section>
+
+  <!-- ══ Certifications ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-certificate" style="color:#ffa028;margin-right:0.5rem;"></i> Certifications &amp; Formations en cours</h2>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rncert', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rncert',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rncert">
+
+      <div class="cert-card">
+        <div class="cert-icon" style="color:#1BA0D7;"><i class="fas fa-certificate"></i></div>
+        <div class="cert-name">CCNA (en cours)</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+        <span class="badge badge-orange">En préparation</span>
+      </div>
+
+
+
+
+      <div class="cert-card">
+        <div class="cert-icon" style="color:#E50914;"><i class="fas fa-graduation-cap"></i></div>
+        <div class="cert-name">BTS SIO SISR</div>
+        <div class="cert-issuer">Éducation Nationale</div>
+        <span class="badge badge-orange">Juin 2027</span>
+      </div>
+
+    </div>
+
+
+     <!-- ══ Certifications ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-certificate" style="color:#ffa028;margin-right:0.5rem;"></i> Certifications</h2>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rncert', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rncert',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rncert">
+
+      <div class="certifications-grid">
+        <div class="cert-card1">
+            <a href="https://www.credly.com/badges/fe584ce8-04c0-48bd-862c-433c7b5b7167/public_url" target="_blank">
+                <img src="certificationCisco.png" alt="Certification 2">
+            </a>
+            <p>CISCO Packet Tracer</p>
+        </div>
+    </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-bottom" style="padding:0 4%;">
+    <span>© 2025–2027 NANA NYA Daniella — BTS SIO SISR</span>
+    <span><a href="index.html" style="color:#808080;">← Retour Accueil</a></span>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollProgress').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+
+function scrollRow(id, dir) {
+  document.getElementById(id).scrollBy({ left: dir * 400, behavior: 'smooth' });
+}
+
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800));
+
+// Animate skill bars on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.skill-card').forEach(c => c.classList.add('animated'));
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

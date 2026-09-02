@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio BTS SIO SISR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- Loader -->
+<div class="page-loader" id="loader">
+  <div class="loader-logo">SISR</div>
+</div>
+
+<!-- Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">D<span>NANA</span>NYA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="synthese.html">Synthèse</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-network-wired"></i>
+      BTS SIO — Option SISR
+    </div>
+    <h1 class="hero-title">NANA NYA<br>DANIELLA</h1>
+    <p class="hero-subtitle">Future Experte du Numérique | Parcours Systèmes, Réseaux & Virtualisation</p>
+    <div class="hero-meta">
+      <span class="year">2025 - 2027</span>
+      <span class="dot"></span>
+      <span>Lycée Turgot Paris</span>
+      <span class="dot"></span>
+      <span class="maturity">SISR</span>
+    </div>
+    <p class="hero-desc">
+      Actuellement en pleine formation informatique, je consacre ces deux années à explorer l'univers du numérique sous toutes ses coutures. Mon parcours est guidé par une curiosité naturelle et l'envie de comprendre comment les technologies s'articulent entre elles. Bienvenue dans mon univers numérique, en constante évolution au fil de mes découvertes.
+    </p>
+    <div class="hero-buttons">
+      <a href="CV_Aout2026.pdf" class="btn btn-primary" id="btnCV">
+        <i class="fas fa-play"></i> Mon CV
+      </a>
+      <a href="#ma-liste" class="btn btn-secondary">
+        <i class="fas fa-info-circle"></i> Plus d'infos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MA LISTE — Projets récents
+═══════════════════════════════════════════ -->
+<main style="padding-bottom: 4rem;" id="ma-liste">
+
+  <!-- Rangée 1 : Ma Liste -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2>Ma Liste</h2>
+      <a href="projets.html" class="see-all">Voir tout <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('row1', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('row1',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="row1">
+
+      <!-- Card: TP VLAN -->
+      <div class="card" onclick="openModal('vlan')">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fas fa-project-diagram"></i></div>
+          <div class="card-title-overlay">TP VLAN &amp; Routage</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <button class="card-btn add" title="Ajouter"><i class="fas fa-plus"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">Avancé</span>
+          </div>
+          <div class="card-meta">
+            <span>Réseaux</span><span>·</span><span>Cisco</span>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Packet Tracer</span>
+            <span class="card-tag">VLAN</span>
+          
+          </div>
+        </div>
+      </div>
+
+   
+
+     
+
+      <!-- Card: Linux -->
+      <div class="card" onclick="openModal('linux')">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fab fa-linux"></i></div>
+          <div class="card-title-overlay">Admin Linux Debian</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <button class="card-btn add"><i class="fas fa-plus"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">Intermédiaire</span>
+          </div>
+          <div class="card-meta"><span>Systèmes</span><span>·</span><span>Debian 12</span></div>
+          <div class="card-tags">
+            <span class="card-tag">SSH</span>
+            <span class="card-tag">Apache</span>
+            <span class="card-tag">RAID</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Virtualisation -->
+      <div class="card" onclick="openModal('virt')">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fas fa-cube"></i></div>
+          <div class="card-title-overlay">Virtualisation</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <button class="card-btn add"><i class="fas fa-plus"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">Avancé</span>
+          </div>
+          <div class="card-meta"><span>Virtualisation</span><span>·</span><span>VirtualBox</span></div>
+          <div class="card-tags">
+            
+            <span class="card-tag">Ubuntu</span>
+            <span class="card-tag">Debian</span>
+          </div>
+        </div>
+      </div>
+
+    
+
+    </div><!-- /row-track -->
+  </section>
+
+  <!-- Rangée 2 : Tendances pour vous (compétences) -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2>Tendances pour vous</h2>
+      <a href="competences.html" class="see-all">Voir tout <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('row2', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('row2',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="row2">
+
+      <div class="card card-portrait">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fas fa-network-wired" style="font-size:2.5rem;color:#E50914;"></i></div>
+          <div class="card-title-overlay" style="font-size:0.78rem;">Réseaux Cisco</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">★ 85%</span>
+          </div>
+          <div class="card-tags"><span class="card-tag">OSPF</span><span class="card-tag">BGP</span></div>
+        </div>
+      </div>
+
+      <div class="card card-portrait">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fab fa-windows" style="font-size:2.5rem;color:#0078D4;"></i></div>
+          <div class="card-title-overlay" style="font-size:0.78rem;">Windows Server</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">★ 80%</span>
+          </div>
+          <div class="card-tags"><span class="card-tag">AD</span><span class="card-tag">GPO</span></div>
+        </div>
+      </div>
+
+      <div class="card card-portrait">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fab fa-linux" style="font-size:2.5rem;color:#FCC624;"></i></div>
+          <div class="card-title-overlay" style="font-size:0.78rem;">Linux Debian</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">★ 75%</span>
+          </div>
+          <div class="card-tags"><span class="card-tag">Bash</span><span class="card-tag">SSH</span></div>
+        </div>
+      </div>
+
+      <div class="card card-portrait">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fas fa-shield-alt" style="font-size:2.5rem;color:#46d369;"></i></div>
+          <div class="card-title-overlay" style="font-size:0.78rem;">Cybersécurité</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">★ 70%</span>
+          </div>
+          <div class="card-tags"><span class="card-tag">pfSense</span><span class="card-tag">VPN</span></div>
+        </div>
+      </div>
+
+     
+
+      <div class="card card-portrait">
+        <div class="card-thumb">
+          <div class="thumb-icon"><i class="fas fa-code" style="font-size:2.5rem;color:#ffa028;"></i></div>
+          <div class="card-title-overlay" style="font-size:0.78rem;">Scripting</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-btn play"><i class="fas fa-play"></i></button>
+            <span class="card-btn-spacer"></span>
+            <span class="card-level">★ 70%</span>
+          </div>
+          <div class="card-tags"><span class="card-tag">PowerShell</span><span class="card-tag">Python</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+
+</main><!-- /main -->
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">SISR</div>
+      <p style="margin-top:0.5rem;">Portfolio BTS SIO<br>Option SISR</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html">Projets</a>
+    </div>
+    <div class="footer-col">
+      <h4>Ressources</h4>
+      <a href="synthese.html">Synthèse</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">CV (PDF)</a>
+    </div>
+   
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025–2027 NANA NYA Daniella — BTS SIO SISR</span>
+    <span>Fait avec <i class="fas fa-heart" style="color:var(--red);"></i> et beaucoup de paquets réseau</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     MODAL INFO
+═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-thumb">
+      <div id="modalBg" style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:5rem;color:rgba(255,255,255,0.15);"></div>
+      <div class="modal-thumb-gradient"></div>
+      <button class="modal-thumb-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;">
+        <button class="btn btn-primary" style="padding:0.5rem 1.5rem;font-size:0.9rem;">
+          <i class="fas fa-play"></i> Voir le TP
+        </button>
+        <button class="card-btn add"><i class="fas fa-plus"></i></button>
+      </div>
+      <h2 id="modalTitle">Titre du projet</h2>
+      <p class="modal-meta" id="modalMeta">Catégorie · Technologies</p>
+      <p class="modal-desc" id="modalDesc">Description du projet.</p>
+      <div id="modalTags" class="card-tags" style="gap:6px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script>
+// ── Navbar scroll ──
+const navbar = document.getElementById('navbar');
+const scrollProgress = document.getElementById('scrollProgress');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const docH = document.body.scrollHeight - window.innerHeight;
+  scrollProgress.style.width = (scrollY / docH * 100) + '%';
+  navbar.classList.toggle('scrolled', scrollY > 50);
+});
+
+// ── Hamburger ──
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ── Row scroll ──
+function scrollRow(id, dir) {
+  const el = document.getElementById(id);
+  el.scrollBy({ left: dir * 400, behavior: 'smooth' });
+}
+
+// ── Modal data ──
+const modals = {
+  vlan:     { title:'TP VLAN & Routage Inter-VLAN',   meta:'Réseaux · Cisco Packet Tracer',                icon:'fa-project-diagram', desc:'Configuration de VLANs sur switches Cisco, routage inter-VLAN avec une interface "router-on-a-stick". Mise en place des ACL pour filtrer le trafic entre VLANs.', tags:['VLAN','Trunk','802.1Q','ACL','Cisco IOS'] },
+  ad:       { title:'Active Directory & GPO',          meta:'Systèmes · Windows Server 2022',               icon:'fa-server',           desc:'Déploiement d\'un contrôleur de domaine Windows Server 2022, création d\'unités organisationnelles, gestion des utilisateurs et application de stratégies de groupe (GPO).', tags:['AD DS','DNS','DHCP','GPO','OU'] },
+  firewall: { title:'Pare-feu pfSense',                meta:'Sécurité · pfSense 2.7',                       icon:'fa-shield-alt',       desc:'Installation et configuration d\'un pare-feu pfSense. Définition de règles de filtrage, NAT, mise en place d\'un tunnel VPN IPsec site-à-site.', tags:['pfSense','Firewall','NAT','VPN IPsec','DMZ'] },
+  linux:    { title:'Administration Linux Debian 12',  meta:'Systèmes · Debian 12 Bookworm',                icon:'fab fa-linux',        desc:'Administration d\'un serveur Debian : configuration réseau, serveur Apache/Nginx, gestion RAID, scripts Bash pour l\'automatisation, durcissement SSH.', tags:['Debian','Apache','SSH','RAID','Bash','Cron'] },
+  virt:     { title:'Virtualisation VMware ESXi',      meta:'Virtualisation · VMware vSphere 8',            icon:'fa-cube',             desc:'Déploiement d\'une infrastructure virtualisée sur VMware ESXi. Création de VMs, gestion du stockage, réseau virtuel (vSwitch), snapshots et templates.', tags:['ESXi','vSphere','vSwitch','Snapshot','OVA'] },
+  nagios:   { title:'Supervision Nagios Core',         meta:'Supervision · Nagios Core 4',                  icon:'fa-chart-line',       desc:'Mise en place d\'une solution de supervision avec Nagios. Monitoring des hôtes, services, interfaces réseau via SNMP. Configuration des alertes mail.', tags:['Nagios','SNMP','NRPE','Alertes','Dashboard'] },
+  stage1:   { title:'Stage en entreprise — 1ère année',meta:'[Nom de l\'entreprise] · 5 semaines',          icon:'fa-building',         desc:'Stage de première année axé sur l\'administration réseau : câblage, configuration de switches et routeurs Cisco, mise en place de VLANs et assistance utilisateurs.', tags:['Cisco','Câblage','VLAN','Support N1','Inventaire'] },
+  stage2:   { title:'Stage en entreprise — 2ème année',meta:'[Nom de l\'entreprise] · 5 semaines',          icon:'fa-building',         desc:'Stage de deuxième année centré sur la sécurité et les infrastructures : administration du pare-feu, mise à jour des équipements, configuration VPN et supervision réseau.', tags:['pfSense','VPN','Nagios','Linux','Active Directory'] },
+};
+
+function openModal(key) {
+  const d = modals[key];
+  if (!d) return;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalMeta').textContent  = d.meta;
+  document.getElementById('modalDesc').textContent  = d.desc;
+  const bg = document.getElementById('modalBg');
+  bg.innerHTML = `<i class="${d.icon}" style="font-size:5rem;color:rgba(255,255,255,0.15);"></i>`;
+  const tagsEl = document.getElementById('modalTags');
+  tagsEl.innerHTML = d.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay') && !e.target.classList.contains('modal-thumb-close') && !e.target.parentElement?.classList.contains('modal-thumb-close')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; } });
+
+// ── Loader ──
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 800);
+});
+
+// ── Reveal on scroll ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
