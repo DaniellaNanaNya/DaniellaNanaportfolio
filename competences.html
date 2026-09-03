@@ -180,38 +180,28 @@
     <button class="row-arrow right" onclick="scrollRow('rn2',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn2">
 
-      <div class="skill-card" style="--pct:82%">
+      <div class="skill-card" style="--pct:82%" onclick="openSkill('winserver')">
         <span class="skill-card-icon" style="color:#0078D4;"><i class="fab fa-windows"></i></span>
         <div class="skill-card-name">Windows Server</div>
         <div class="skill-card-level">82% · Avancé</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags">
-          <span class="card-tag">WS 2022</span><span class="card-tag">AD DS</span><span class="card-tag">GPO</span>
+          
         </div>
       </div>
 
-      <div class="skill-card" style="--pct:75%">
+      <div class="skill-card" style="--pct:75%" onclick="openSkill('linux')">
         <span class="skill-card-icon" style="color:#FCC624;"><i class="fab fa-linux"></i></span>
         <div class="skill-card-name">Linux Debian</div>
         <div class="skill-card-level">75% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags">
-          <span class="card-tag">Debian 12</span><span class="card-tag">Ubuntu</span><span class="card-tag">SSH</span>
-        </div>
-      </div>
-
-      <div class="skill-card" style="--pct:70%">
-        <span class="skill-card-icon" style="color:#46d369;"><i class="fas fa-database"></i></span>
-        <div class="skill-card-name">Active Directory</div>
-        <div class="skill-card-level">70% · Intermédiaire</div>
-        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">OU</span><span class="card-tag">LDAP</span><span class="card-tag">Kerberos</span>
+          <span class="card-tag">Debian 12</span><span class="card-tag">Ubuntu</span>
         </div>
       </div>
 
 
-      <div class="skill-card" style="--pct:60%">
+      <div class="skill-card" style="--pct:60%" onclick="openSkill('glpi')">
         <span class="skill-card-icon" style="color:#E50914;"><i class="fas fa-print"></i></span>
         <div class="skill-card-name">GLPI</div>
         <div class="skill-card-level">60% · Intermédiaire</div>
@@ -237,23 +227,23 @@
 
      
 
-      <div class="skill-card" style="--pct:80%">
+      <div class="skill-card" style="--pct:80%" onclick="openSkill('routage')">
         <span class="skill-card-icon" style="color:#ffa028;"><i class="fas fa-route"></i></span>
         <div class="skill-card-name">Routage IP</div>
         <div class="skill-card-level">80% · Avancé</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags">
-          <span class="card-tag">OSPF</span><span class="card-tag">RIP</span><span class="card-tag">EIGRP</span>
+          <span class="card-tag">LAN[réseau local]</span><span class="card-tag">WAN[réseau étendu]</span>
         </div>
       </div>
 
-      <div class="skill-card" style="--pct:75%">
+      <div class="skill-card" style="--pct:75%" onclick="openSkill('tcpip')">
         <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-globe"></i></span>
         <div class="skill-card-name">TCP/IP & DNS</div>
         <div class="skill-card-level">75% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags">
-          <span class="card-tag">IPv4</span><span class="card-tag">IPv6</span><span class="card-tag">DHCP</span>
+          <span class="card-tag">IPv4</span><span class="card-tag">IPv6</span><span class="card-tag">PLRTSPA</span>
         </div>
       </div>
 
@@ -271,33 +261,22 @@
     <div class="row-track" id="rn3">
 
 
-      <div class="skill-card" style="--pct:60%">
+      <div class="skill-card" style="--pct:60%" onclick="openSkill('pentest')">
         <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-user-secret"></i></span>
         <div class="skill-card-name">Pentest basique</div>
         <div class="skill-card-level">60% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags">
-          <span class="card-tag">Nmap</span><span class="card-tag">Wireshark</span><span class="card-tag">Kali</span>
+          <span class="card-tag">Capture the flag</span><span class="card-tag">Wireshark</span><span class="card-tag">Kali</span>
         </div>
       </div>
-
-      <div class="skill-card" style="--pct:55%">
-        <span class="skill-card-icon" style="color:#aaa;"><i class="fas fa-key"></i></span>
-        <div class="skill-card-name">EBIOS</div>
-        <div class="skill-card-level">55% · Débutant</div>
-        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">TLS/SSL</span><span class="card-tag">Let's Encrypt</span>
-        </div>
-      </div>
-
-    </div>
+   </div>
   </section>
 
   <!-- ══ RANGÉE 4 : Virtualisation ══ -->
   <section class="row-section reveal">
     <div class="section-label">
-      <h2><i class="fas fa-cube" style="color:#ffa028;margin-right:0.5rem;"></i> Virtualisation &amp; Cloud</h2>
+      <h2><i class="fas fa-cube" style="color:#ffa028;margin-right:0.5rem;"></i> Virtualisation</h2>
       <span class="see-all">Voir détails <i class="fas fa-chevron-right"></i></span>
     </div>
     <button class="row-arrow left"  onclick="scrollRow('rn4', -1)"><i class="fas fa-chevron-left"></i></button>
@@ -305,20 +284,20 @@
     <div class="row-track" id="rn4">
 
 
-      <div class="skill-card" style="--pct:70%">
+      <div class="skill-card" style="--pct:70%" onclick="openSkill('virtualbox')">
         <span class="skill-card-icon" style="color:#183A52;"><i class="fas fa-box"></i></span>
         <div class="skill-card-name">VirtualBox</div>
         <div class="skill-card-level">70% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags"><span class="card-tag">OVA</span><span class="card-tag">Snapshot</span></div>
+        <div class="skill-card-tags"><span class="card-tag">Windows</span><span class="card-tag">Linux</span></div>
       </div>
 
-      <div class="skill-card" style="--pct:45%">
-        <span class="skill-card-icon" style="color:#2496ED;"><i class="fab fa-docker"></i></span>
-        <div class="skill-card-name">Windows</div>
-        <div class="skill-card-level">45% · Débutant</div>
+      <div class="skill-card" style="--pct:55%" onclick="openSkill('vmwindows')">
+        <span class="skill-card-icon" style="color:#0078D4;"><i class="fab fa-windows"></i></span>
+        <div class="skill-card-name">VM Windows</div>
+        <div class="skill-card-level">55% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags"><span class="card-tag">Containers</span><span class="card-tag">Dockerfile</span></div>
+        <div class="skill-card-tags"><span class="card-tag">Windows 10/11</span></div>
       </div>
 
     </div>
@@ -333,28 +312,28 @@
     <button class="row-arrow right" onclick="scrollRow('rn5',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn5">
 
-      <div class="skill-card" style="--pct:72%">
+      <div class="skill-card" style="--pct:40%" onclick="openSkill('powershell')">
         <span class="skill-card-icon" style="color:#012456;"><i class="fas fa-terminal"></i></span>
         <div class="skill-card-name">PowerShell</div>
-        <div class="skill-card-level">72% · Avancé</div>
+        <div class="skill-card-level">40% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags"><span class="card-tag">Scripts AD</span><span class="card-tag">Automation</span></div>
+        <div class="skill-card-tags"></div>
       </div>
 
-      <div class="skill-card" style="--pct:65%">
+      <div class="skill-card" style="--pct:40%" onclick="openSkill('python')">
         <span class="skill-card-icon" style="color:#3572A5;"><i class="fab fa-python"></i></span>
         <div class="skill-card-name">Python</div>
-        <div class="skill-card-level">65% · Intermédiaire</div>
+        <div class="skill-card-level">40% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags"><span class="card-tag">Requests</span><span class="card-tag">Paramiko</span></div>
+        <div class="skill-card-tags"></div>
       </div>
 
-      <div class="skill-card" style="--pct:78%">
+      <div class="skill-card" style="--pct:40%" onclick="openSkill('bash')">
         <span class="skill-card-icon" style="color:#89e051;"><i class="fas fa-terminal"></i></span>
         <div class="skill-card-name">Bash</div>
-        <div class="skill-card-level">78% · Avancé</div>
+        <div class="skill-card-level">40% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags"><span class="card-tag">Cron</span><span class="card-tag">sed/awk</span></div>
+        <div class="skill-card-tags"></div>
       </div>
 
     </div>
@@ -424,6 +403,25 @@
 
 </main>
 
+<!-- ═══════════════════════════════════════════
+     MODAL COMPÉTENCE
+═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="skillModalOverlay" onclick="closeSkill(event)">
+  <div class="modal" id="skillModal">
+    <div class="modal-thumb">
+      <div id="skillModalBg" style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:5rem;color:rgba(255,255,255,0.15);"></div>
+      <div class="modal-thumb-gradient"></div>
+      <button class="modal-thumb-close" onclick="closeSkill()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <h2 id="skillModalTitle">Titre</h2>
+      <p class="modal-meta" id="skillModalMeta">Catégorie</p>
+      <p class="modal-desc" id="skillModalDesc">Description.</p>
+      <div id="skillModalTags" class="card-tags" style="gap:6px;"></div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-bottom" style="padding:0 4%;">
     <span>© 2025–2027 NANA NYA Daniella — BTS SIO SISR</span>
@@ -443,6 +441,108 @@ function scrollRow(id, dir) {
 }
 
 window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800));
+
+// ── Détail des compétences (au clic sur une carte) ──
+const skillModals = {
+  winserver: {
+    title: 'Windows Server',
+    meta: 'Systèmes',
+    icon: 'fab fa-windows',
+    desc: "Windows Server est le système d'exploitation utilisé pour administrer un réseau d'entreprise : il centralise l'authentification des utilisateurs, le partage de fichiers et d'imprimantes, et la distribution des règles de sécurité via Active Directory. Je m'en sers pour comprendre comment une organisation gère ses postes et ses comptes utilisateurs de façon centralisée.",
+    tags: ['Active Directory', 'Gestion des utilisateurs', 'Partage réseau']
+  },
+  glpi: {
+    title: 'GLPI',
+    meta: 'Systèmes · Gestion de parc',
+    icon: 'fas fa-print',
+    desc: "GLPI est un logiciel de gestion de parc informatique : il sert à faire l'inventaire du matériel, suivre les tickets d'incidents et gérer les demandes des utilisateurs. Je l'ai installé sur une machine virtuelle Linux, ce qui m'a permis de découvrir en plus le déploiement d'une application web (serveur + base de données).",
+    tags: ['Inventaire', 'Tickets', 'VM Linux']
+  },
+  linux: {
+    title: 'Linux Debian & Ubuntu',
+    meta: 'Systèmes',
+    icon: 'fab fa-linux',
+    desc: "J'ai installé et administré Debian et Ubuntu en ligne de commande. Sur Ubuntu, j'ai mis en place une pile LAMP (Linux, Apache, MySQL, PHP) pour héberger un site et une base de données.",
+    tags: ['Debian 12', 'Ubuntu', 'LAMP', 'Apache', 'MySQL']
+  },
+  routage: {
+    title: 'Routage IP',
+    meta: 'Réseaux',
+    icon: 'fas fa-route',
+    desc: "Le routage permet de faire transiter des données d'un réseau à un autre. Ça se comprend avec le modèle OSI (voir la carte TCP/IP)",
+    tags: ['Modèle OSI', 'LAN', 'WAN', 'Table de routage']
+  },
+  tcpip: {
+    title: 'TCP/IP & DNS',
+    meta: 'Réseaux',
+    icon: 'fas fa-globe',
+    desc: "Le modèle OSI découpe la communication réseau en 7 couches : la couche physique transmet les signaux (câbles, ondes), la couche liaison gère l'adressage local et la détection d'erreurs (adresses MAC), la couche réseau s'occupe de l'adressage IP et du routage entre réseaux, la couche transport assure la fiabilité et le découpage des données (TCP/UDP), la couche session gère l'ouverture et la fermeture des échanges entre deux machines, la couche présentation met les données dans un format compréhensible (chiffrement, compression), et la couche application correspond aux logiciels utilisés par l'utilisateur (navigateur, mail...).",
+    tags: ['IPv4', 'IPv6', 'DNS']
+  },
+  pentest: {
+    title: 'Pentest basique',
+    meta: 'Sécurité',
+    icon: 'fas fa-user-secret',
+    desc: "Découverte du pentest à travers un Capture The Flag (CTF) réalisé en classe : recherche de failles simples sur des machines dédiées à l'exercice, analyse du trafic réseau avec Wireshark, premiers pas avec Kali Linux. Un aperçu pratique de la sécurité offensive, encore à un niveau débutant.",
+    tags: ['CTF', 'Wireshark', 'Kali Linux']
+  },
+  virtualbox: {
+    title: 'VirtualBox',
+    meta: 'Virtualisation',
+    icon: 'fas fa-box',
+    desc: "Installation et utilisation de machines virtuelles avec VirtualBox : création de VMs, gestion des ressources allouées (RAM, CPU, disque) et des réseaux virtuels. Une première approche concrète de la virtualisation.",
+    tags: ['VM', 'Snapshots', 'Réseau virtuel']
+  },
+  vmwindows: {
+    title: 'VM Windows',
+    meta: 'Virtualisation',
+    icon: 'fab fa-windows',
+    desc: "Création et configuration d'une machine virtuelle sous Windows avec VirtualBox, en parallèle des VMs Linux. Ça permet de tester des configurations sans toucher à la machine physique.",
+    tags: ['VM', 'Windows']
+  },
+  powershell: {
+    title: 'PowerShell',
+    meta: 'Scripting & Automatisation',
+    icon: 'fas fa-terminal',
+    desc: "Bases du scripting avec PowerShell vues en cours : syntaxe, variables, quelques commandes d'administration système. Niveau encore débutant, à approfondir.",
+    tags: ['Scripting', 'Bases']
+  },
+  python: {
+    title: 'Python',
+    meta: 'Scripting & Automatisation',
+    icon: 'fab fa-python',
+    desc: "Bases du langage Python vues en cours : variables, boucles, conditions, petites fonctions simples. Niveau encore débutant, à approfondir.",
+    tags: ['Scripting', 'Bases']
+  },
+  bash: {
+    title: 'Bash',
+    meta: 'Scripting & Automatisation',
+    icon: 'fas fa-terminal',
+    desc: "Bases du scripting Bash vues en cours, en lien avec l'administration Linux : quelques commandes et petits scripts simples. Niveau encore débutant, à approfondir.",
+    tags: ['Scripting', 'Bases']
+  },
+};
+
+function openSkill(key) {
+  const d = skillModals[key];
+  if (!d) return;
+  document.getElementById('skillModalTitle').textContent = d.title;
+  document.getElementById('skillModalMeta').textContent  = d.meta;
+  document.getElementById('skillModalDesc').textContent  = d.desc;
+  const bg = document.getElementById('skillModalBg');
+  bg.innerHTML = `<i class="${d.icon}" style="font-size:5rem;color:rgba(255,255,255,0.15);"></i>`;
+  const tagsEl = document.getElementById('skillModalTags');
+  tagsEl.innerHTML = d.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+  document.getElementById('skillModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSkill(e) {
+  if (e && e.target !== document.getElementById('skillModalOverlay') && !e.target.classList.contains('modal-thumb-close') && !e.target.parentElement?.classList.contains('modal-thumb-close')) return;
+  document.getElementById('skillModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('skillModalOverlay').classList.remove('open'); document.body.style.overflow = ''; } });
 
 // Animate skill bars on scroll
 const observer = new IntersectionObserver(entries => {
