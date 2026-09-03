@@ -168,10 +168,11 @@
   <!-- Filtres -->
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filter('all', this)">Tout</button>
+    <button class="filter-btn" onclick="filter('veille', this)"><i class="fas fa-satellite-dish"></i> Veille</button>
+    <button class="filter-btn" onclick="filter('perso', this)"><i class="fas fa-star"></i> Projet perso</button>
     <button class="filter-btn" onclick="filter('reseaux', this)"><i class="fas fa-network-wired"></i> Réseaux</button>
     <button class="filter-btn" onclick="filter('systemes', this)"><i class="fas fa-server"></i> Systèmes</button>
     <button class="filter-btn" onclick="filter('securite', this)"><i class="fas fa-shield-alt"></i> Sécurité</button>
-    <button class="filter-btn" onclick="filter('supervision', this)"><i class="fas fa-chart-line"></i> Supervision</button>
     <button class="filter-btn" onclick="filter('virt', this)"><i class="fas fa-cube"></i> Virtualisation</button>
   </div>
 
@@ -278,6 +279,44 @@
       </div>
     </div>
 
+    <!-- Veille -->
+    <div class="project-card" data-cat="veille" onclick="openProject('veille')">
+      <div class="project-bg" style="background:linear-gradient(135deg,#0a0d1a,#101a3d);">
+        <i class="fas fa-satellite-dish"></i>
+      </div>
+      <div class="project-gradient"></div>
+      <div class="project-actions">
+        <button class="card-btn play" style="width:28px;height:28px;font-size:0.75rem;"><i class="fas fa-play"></i></button>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Veille technologique</div>
+        <div class="project-title">Starlink & connectivité satellite</div>
+        <div class="project-desc">Synthèse de veille sur les réseaux de satellites en orbite basse et l'accès Internet dans les zones isolées.</div>
+        <div class="project-tags">
+          <span class="card-tag">Starlink</span><span class="card-tag">Satellite</span><span class="card-tag">Veille</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet personnel -->
+    <div class="project-card" data-cat="perso" onclick="openProject('perso')">
+      <div class="project-bg" style="background:linear-gradient(135deg,#1a0a2e,#2d1b69);">
+        <i class="fas fa-clapperboard"></i>
+      </div>
+      <div class="project-gradient"></div>
+      <div class="project-actions">
+        <button class="card-btn play" style="width:28px;height:28px;font-size:0.75rem;"><i class="fas fa-play"></i></button>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Projet personnel</div>
+        <div class="project-title">SulValley — Site de streaming Sims 4</div>
+        <div class="project-desc">Site perso inspiré des plateformes de streaming pour présenter mes séries machinima Sims 4.</div>
+        <div class="project-tags">
+          <span class="card-tag">HTML/CSS/JS</span><span class="card-tag">UI Design</span><span class="card-tag">Sims 4</span>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /projects-grid -->
 </main>
 
@@ -342,6 +381,8 @@ const projects = {
   ps:        { title:'Scripts PowerShell AD',              meta:'Systèmes · PowerShell 7 · 2ème année',                             icon:'fa-terminal',         bg:'135deg,#000d1a,#001a3d', desc:'Développement de scripts PowerShell pour l\'administration Active Directory : création en masse d\'utilisateurs depuis CSV, génération de rapports d\'activité, application automatique de GPO et gestion des mots de passe expirés.', tags:['PowerShell','AD','CSV','Automation','Rapports'] },
   wireshark: { title:'Analyse Wireshark & PCAP',           meta:'Réseaux · Sécurité · Wireshark · 1ère année',                     icon:'fa-eye',              bg:'135deg,#001a0d,#003d1a', desc:'Capture et analyse approfondie de trames réseau avec Wireshark. Identification des protocoles (TCP, UDP, HTTP, DNS, ARP), application de filtres d\'affichage, détection d\'anomalies et reconstruction de sessions.', tags:['Wireshark','PCAP','Filtres','TCP/IP','Analyse protocolaire'] },
   glpi:      { title:'Déploiement GLPI + OCS Inventory',   meta:'Systèmes · GLPI 10 · OCS Inventory 2 · 2ème année',               icon:'fa-ticket-alt',       bg:'135deg,#1a0a00,#3d1e00', desc:'Installation et configuration de GLPI comme solution ITSM. Intégration avec OCS Inventory pour l\'inventaire automatique du parc. Création de catégories de tickets, gestion des SLA et tableau de bord technicien.', tags:['GLPI 10','OCS Inventory','ITSM','Helpdesk','Inventaire','SLA'] },
+  veille:    { title:'Veille : Starlink & connectivité satellite', meta:'Veille technologique · 2025-2026', icon:'fa-satellite-dish', bg:'135deg,#0a0d1a,#101a3d', desc:'Starlink (SpaceX) et d\'autres réseaux de satellites en orbite basse permettent de fournir un accès Internet haut débit dans les zones où la fibre ou l\'ADSL n\'arrivent pas : montagnes, îles, pays en développement. Le principe : des milliers de petits satellites très proches de la Terre (environ 550 km d\'altitude) offrent une latence beaucoup plus faible que les satellites classiques. En 2026, le réseau continue de s\'étendre rapidement : lancement en Afrique centrale, partenariat avec Microsoft Azure pour les usages professionnels, amélioration des débits en France. Un sujet qui bouge vite et qui touche à la fois la technique (orbite basse, latence, capacité) et des enjeux plus larges : accès à l\'information dans le monde, et dépendance à un acteur privé pour une infrastructure aussi stratégique.', tags:['Starlink','Orbite basse (LEO)','Zones isolées','SpaceX'] },
+  perso:     { title:'SulValley — Site de streaming Sims 4', meta:'Projet personnel · HTML / CSS / JavaScript', icon:'fa-clapperboard', bg:'135deg,#1a0a2e,#2d1b69', desc:'En dehors du cadre scolaire, j\'ai développé un site web personnel inspiré des plateformes de streaming (type Netflix) pour organiser et présenter mes séries machinima Sims 4, comme "Ward University". Le site reprend les codes d\'une vraie plateforme : fiches par série, découpage en saisons et épisodes avec durée et résumé, lecture, mise en avant des contenus. Un projet perso qui m\'a permis de pratiquer le développement front-end (structure, mise en page, interactions) en dehors des TP du BTS.', tags:['HTML/CSS/JS','UI Design','Front-end'], img:'sulvalley-preview.png' },
 };
 
 function openProject(key) {
@@ -350,8 +391,13 @@ function openProject(key) {
   document.getElementById('modalTitle').textContent = d.title;
   document.getElementById('modalMeta').textContent  = d.meta;
   document.getElementById('modalDesc').textContent  = d.desc;
-  document.getElementById('modalBg').style.background = `linear-gradient(${d.bg})`;
-  document.getElementById('modalBg').innerHTML = `<i class="${d.icon}" style="font-size:5rem;color:rgba(255,255,255,0.12);"></i>`;
+  const bg = document.getElementById('modalBg');
+  bg.style.background = `linear-gradient(${d.bg})`;
+  if (d.img) {
+    bg.innerHTML = `<img src="${d.img}" alt="${d.title}" style="width:100%;height:100%;object-fit:cover;">`;
+  } else {
+    bg.innerHTML = `<i class="${d.icon}" style="font-size:5rem;color:rgba(255,255,255,0.12);"></i>`;
+  }
   document.getElementById('modalTags').innerHTML = d.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
