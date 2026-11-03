@@ -1104,6 +1104,15 @@ kbd {
   margin-bottom: 0.5rem;
 }
 .proc-shot img { border-radius: 6px; }
+.proc-shot:empty::before { content: "Capture d'écran à ajouter"; }
+.proc-shot:not(:empty) { border: none; min-height: 0; }
+.proc-notice.hidden { display: none; }
+.proc-warn {
+  background: rgba(229,9,20,0.08);
+  border: 1px solid rgba(229,9,20,0.35);
+  color: #f2a0a4;
+}
+.proc-warn i { color: var(--red); }
 
 /* ============================================================
    FOOTER
