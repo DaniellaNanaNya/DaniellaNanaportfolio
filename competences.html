@@ -159,16 +159,14 @@
     <p class="page-hero-eyebrow"><i class="fas fa-layer-group"></i> &nbsp; Mes catégories</p>
     <h1>Compétences</h1>
     <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
-      <span class="badge badge-red">5 Catégories</span>
+      <span class="badge badge-red">6 Catégories</span>
       <span class="badge badge-green">SISR Niveau 2</span>
-      <span style="color:#aaa;font-size:0.9rem;">Réseaux · Systèmes · Sécurité · Virtualisation · Scripting</span>
+      <span style="color:#aaa;font-size:0.9rem;">Réseaux · Systèmes · Bases de données · Sécurité · Virtualisation · Scripting</span>
     </div>
   </div>
 </div>
 
 <main style="padding-bottom:4rem;">
-
-  
 
   <!-- ══ RANGÉE 1 : Systèmes ══ -->
   <section class="row-section reveal">
@@ -185,9 +183,7 @@
         <div class="skill-card-name">Windows Server</div>
         <div class="skill-card-level">82% · Avancé</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          
-        </div>
+        <div class="skill-card-tags"></div>
       </div>
 
       <div class="skill-card" style="--pct:75%" onclick="openSkill('linux')">
@@ -199,7 +195,6 @@
           <span class="card-tag">Debian 12</span><span class="card-tag">Ubuntu</span>
         </div>
       </div>
-
 
       <div class="skill-card" style="--pct:60%" onclick="openSkill('glpi')">
         <span class="skill-card-icon" style="color:#E50914;"><i class="fas fa-print"></i></span>
@@ -214,7 +209,6 @@
     </div>
   </section>
 
-
   <!-- ══ RANGÉE 2 : Réseaux ══ -->
   <section class="row-section reveal">
     <div class="section-label">
@@ -224,8 +218,6 @@
     <button class="row-arrow left"  onclick="scrollRow('rn1', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn1',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn1">
-
-     
 
       <div class="skill-card" style="--pct:80%" onclick="openSkill('routage')">
         <span class="skill-card-icon" style="color:#ffa028;"><i class="fas fa-route"></i></span>
@@ -250,7 +242,31 @@
     </div>
   </section>
 
-  <!-- ══ RANGÉE 3 : Sécurité ══ -->
+  <!-- ══ RANGÉE 3 : Bases de données ══ -->
+  <section class="row-section reveal">
+    <div class="section-label">
+      <h2><i class="fas fa-database" style="color:#C0765A;margin-right:0.5rem;"></i> Bases de données</h2>
+      <span class="see-all">Voir détails <i class="fas fa-chevron-right"></i></span>
+    </div>
+    <button class="row-arrow left"  onclick="scrollRow('rndb', -1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="row-arrow right" onclick="scrollRow('rndb',  1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="row-track" id="rndb">
+
+      <div class="skill-card has-proc" style="--pct:45%" onclick="openProc('sql')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
+        <span class="skill-card-icon" style="color:#C0765A;"><i class="fas fa-table"></i></span>
+        <div class="skill-card-name">SQL</div>
+        <div class="skill-card-level">45% · Débutant</div>
+        <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
+        <div class="skill-card-tags">
+          <span class="card-tag">MariaDB</span><span class="card-tag">Requêtes</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ RANGÉE 4 : Sécurité ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-shield-alt" style="color:#46d369;margin-right:0.5rem;"></i> Sécurité</h2>
@@ -259,7 +275,6 @@
     <button class="row-arrow left"  onclick="scrollRow('rn3', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn3',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn3">
-
 
       <div class="skill-card" style="--pct:60%" onclick="openSkill('pentest')">
         <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-user-secret"></i></span>
@@ -270,10 +285,11 @@
           <span class="card-tag">Capture the flag</span><span class="card-tag">Wireshark</span><span class="card-tag">Kali</span>
         </div>
       </div>
-   </div>
+
+    </div>
   </section>
 
-  <!-- ══ RANGÉE 4 : Virtualisation ══ -->
+  <!-- ══ RANGÉE 5 : Virtualisation ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-cube" style="color:#ffa028;margin-right:0.5rem;"></i> Virtualisation</h2>
@@ -282,7 +298,6 @@
     <button class="row-arrow left"  onclick="scrollRow('rn4', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn4',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn4">
-
 
       <div class="skill-card" style="--pct:70%" onclick="openSkill('virtualbox')">
         <span class="skill-card-icon" style="color:#183A52;"><i class="fas fa-box"></i></span>
@@ -303,7 +318,7 @@
     </div>
   </section>
 
-  <!-- ══ RANGÉE 5 : Scripting ══ -->
+  <!-- ══ RANGÉE 6 : Scripting ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-code" style="color:#ffa028;margin-right:0.5rem;"></i> Scripting &amp; Automatisation</h2>
@@ -348,10 +363,14 @@
       <div class="tool-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Github</span></div>
       <div class="tool-item"><i class="fas fa-code-branch" style="color:#aaa;"></i><span>VS Code</span></div>
       <div class="tool-item"><i class="fas fa-ticket-alt" style="color:#ffa028;"></i><span>GLPI</span></div>
+      <div class="tool-item has-proc" onclick="openProc('mariadb')" title="Voir ma procédure d'installation">
+        <span class="proc-dot"></span>
+        <i class="fas fa-database" style="color:#C0765A;"></i><span>MariaDB</span>
+      </div>
     </div>
   </section>
 
-  <!-- ══ Certifications ══ -->
+  <!-- ══ Certifications & formations en cours ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-certificate" style="color:#ffa028;margin-right:0.5rem;"></i> Certifications &amp; Formations en cours</h2>
@@ -367,9 +386,6 @@
         <span class="badge badge-orange">En préparation</span>
       </div>
 
-
-
-
       <div class="cert-card">
         <div class="cert-icon" style="color:#E50914;"><i class="fas fa-graduation-cap"></i></div>
         <div class="cert-name">BTS SIO SISR</div>
@@ -378,33 +394,29 @@
       </div>
 
     </div>
+  </section>
 
-
-     <!-- ══ Certifications ══ -->
+  <!-- ══ Certifications obtenues ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-certificate" style="color:#ffa028;margin-right:0.5rem;"></i> Certifications</h2>
     </div>
-    <button class="row-arrow left"  onclick="scrollRow('rncert', -1)"><i class="fas fa-chevron-left"></i></button>
-    <button class="row-arrow right" onclick="scrollRow('rncert',  1)"><i class="fas fa-chevron-right"></i></button>
-    <div class="row-track" id="rncert">
-
+    <div class="row-track" id="rncert2">
       <div class="certifications-grid">
         <div class="cert-card1">
-            <a href="https://www.credly.com/badges/fe584ce8-04c0-48bd-862c-433c7b5b7167/public_url" target="_blank">
-                <img src="certificationCisco.png" alt="Certification 2">
-            </a>
-            <p>CISCO Packet Tracer</p>
+          <a href="https://www.credly.com/badges/fe584ce8-04c0-48bd-862c-433c7b5b7167/public_url" target="_blank">
+            <img src="certificationCisco.png" alt="Certification Cisco Packet Tracer">
+          </a>
+          <p>CISCO Packet Tracer</p>
         </div>
-    </div>
-
+      </div>
     </div>
   </section>
 
 </main>
 
 <!-- ═══════════════════════════════════════════
-     MODAL COMPÉTENCE
+     MODAL COMPÉTENCE (petite fiche)
 ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="skillModalOverlay" onclick="closeSkill(event)">
   <div class="modal" id="skillModal">
@@ -418,6 +430,142 @@
       <p class="modal-meta" id="skillModalMeta">Catégorie</p>
       <p class="modal-desc" id="skillModalDesc">Description.</p>
       <div id="skillModalTags" class="card-tags" style="gap:6px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL PROCÉDURE (grande bulle scrollable)
+═══════════════════════════════════════════ -->
+<div class="proc-overlay" id="procOverlay" onclick="if(event.target===this) closeProc()">
+  <div class="proc-modal" role="dialog" aria-modal="true" aria-labelledby="procTitle">
+
+    <header class="proc-header">
+      <div class="proc-header-icon"><i class="fas fa-database"></i></div>
+      <div class="proc-header-text">
+        <p class="proc-eyebrow" id="procEyebrow">Procédure</p>
+        <h2 id="procTitle">Installation de MariaDB sur Debian</h2>
+      </div>
+      <button class="proc-close" onclick="closeProc()" aria-label="Fermer"><i class="fas fa-times"></i></button>
+    </header>
+
+    <div class="proc-body" id="procBody">
+
+      <!-- Intro qui change selon la carte cliquée (SQL ou MariaDB) -->
+      <p class="proc-intro" id="procIntro"></p>
+
+      <div class="proc-notice">
+        <i class="fas fa-hourglass-half"></i>
+        <span><strong>Procédure prévisionnelle</strong> — elle sera mise à jour avec mes captures d'écran une fois l'installation réalisée sur mon PC Debian.</span>
+      </div>
+
+      <!-- ═════════ CONTENU DE LA PROCÉDURE (à modifier ici) ═════════ -->
+      <div class="proc-meta-grid">
+        <div><span>Système</span><strong>Debian 12 / 13</strong></div>
+        <div><span>Logiciel</span><strong>MariaDB Server</strong></div>
+        <div><span>Droits</span><strong>sudo / root</strong></div>
+        <div><span>Durée</span><strong>~ 15 min</strong></div>
+      </div>
+
+      <h3 class="proc-section-title">Objectif</h3>
+      <p>Installer un serveur de bases de données MariaDB sur ma machine Debian, le sécuriser, puis créer une base et un utilisateur dédié pour pratiquer le SQL.</p>
+
+      <ol class="proc-steps">
+
+        <li class="proc-step">
+          <h4>Mettre à jour le système</h4>
+          <p>Avant toute installation, on met à jour la liste des paquets et les paquets déjà installés.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo apt update && sudo apt upgrade -y</code></pre>
+          <div class="proc-shot">Capture d'écran à ajouter</div>
+        </li>
+
+        <li class="proc-step">
+          <h4>Installer MariaDB</h4>
+          <p>MariaDB est disponible directement dans les dépôts officiels de Debian.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo apt install mariadb-server mariadb-client -y</code></pre>
+          <div class="proc-shot">Capture d'écran à ajouter</div>
+        </li>
+
+        <li class="proc-step">
+          <h4>Vérifier que le service tourne</h4>
+          <p>On contrôle que le service est actif et on l'active au démarrage de la machine.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo systemctl status mariadb
+sudo systemctl enable mariadb
+mariadb --version</code></pre>
+          <p class="proc-tip"><i class="fas fa-lightbulb"></i> La ligne <em>Active: active (running)</em> en vert confirme que le serveur fonctionne. Touche <kbd>q</kbd> pour quitter l'affichage.</p>
+          <div class="proc-shot">Capture d'écran à ajouter</div>
+        </li>
+
+        <li class="proc-step">
+          <h4>Sécuriser l'installation</h4>
+          <p>Un script fourni avec MariaDB permet de supprimer les réglages par défaut peu sûrs.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo mariadb-secure-installation</code></pre>
+          <table class="proc-table">
+            <thead><tr><th>Question posée</th><th>Réponse</th></tr></thead>
+            <tbody>
+              <tr><td>Enter current password for root</td><td>Entrée (vide)</td></tr>
+              <tr><td>Switch to unix_socket authentication</td><td>n</td></tr>
+              <tr><td>Change the root password?</td><td>Y (choisir un mot de passe fort)</td></tr>
+              <tr><td>Remove anonymous users?</td><td>Y</td></tr>
+              <tr><td>Disallow root login remotely?</td><td>Y</td></tr>
+              <tr><td>Remove test database?</td><td>Y</td></tr>
+              <tr><td>Reload privilege tables now?</td><td>Y</td></tr>
+            </tbody>
+          </table>
+          <div class="proc-shot">Capture d'écran à ajouter</div>
+        </li>
+
+        <li class="proc-step">
+          <h4>Se connecter à MariaDB</h4>
+          <p>On ouvre la console SQL en tant qu'administrateur.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo mariadb</code></pre>
+          <p class="proc-tip"><i class="fas fa-lightbulb"></i> L'invite devient <em>MariaDB [(none)]&gt;</em> : on peut maintenant taper des requêtes SQL.</p>
+        </li>
+
+        <li class="proc-step">
+          <h4>Créer une base et un utilisateur</h4>
+          <p>On évite de travailler avec root : on crée une base de test et un utilisateur qui n'a des droits que sur elle.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>CREATE DATABASE portfolio;
+CREATE USER 'daniella'@'localhost' IDENTIFIED BY 'MotDePasseFort!';
+GRANT ALL PRIVILEGES ON portfolio.* TO 'daniella'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;</code></pre>
+          <div class="proc-shot">Capture d'écran à ajouter</div>
+        </li>
+
+        <li class="proc-step">
+          <h4>Tester avec quelques requêtes SQL</h4>
+          <p>On se reconnecte avec le nouvel utilisateur et on crée une première table.</p>
+          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>mariadb -u daniella -p
+
+USE portfolio;
+CREATE TABLE competences (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(50) NOT NULL,
+  niveau INT
+);
+INSERT INTO competences (nom, niveau) VALUES ('SQL', 45), ('Linux', 75);
+SELECT * FROM competences;</code></pre>
+          <div class="proc-shot">Capture d'écran à ajouter</div>
+        </li>
+
+      </ol>
+
+      <h3 class="proc-section-title">Commandes utiles</h3>
+      <table class="proc-table">
+        <thead><tr><th>Commande</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td><code>SHOW DATABASES;</code></td><td>Lister les bases</td></tr>
+          <tr><td><code>SHOW TABLES;</code></td><td>Lister les tables de la base courante</td></tr>
+          <tr><td><code>DESCRIBE competences;</code></td><td>Voir la structure d'une table</td></tr>
+          <tr><td><code>sudo systemctl restart mariadb</code></td><td>Redémarrer le serveur</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="proc-section-title">Bilan</h3>
+      <p>À compléter après l'installation : difficultés rencontrées, ce que j'ai appris, prochaines étapes (par exemple relier MariaDB à GLPI ou à un site PHP).</p>
+      <!-- ═════════ FIN DU CONTENU DE LA PROCÉDURE ═════════ -->
+
     </div>
   </div>
 </div>
@@ -542,7 +690,48 @@ function closeSkill(e) {
   document.getElementById('skillModalOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('skillModalOverlay').classList.remove('open'); document.body.style.overflow = ''; } });
+
+// ── Grande bulle "Procédure" (MariaDB / SQL) ──
+const procIntros = {
+  mariadb: {
+    eyebrow: 'Outil · Bases de données',
+    intro: "MariaDB est un système de gestion de bases de données relationnelles (SGBDR), libre et compatible avec MySQL. Voici la procédure que j'ai suivie pour l'installer sur mon PC Debian."
+  },
+  sql: {
+    eyebrow: 'Compétence · SQL',
+    intro: "Le SQL est le langage qui permet de créer, interroger et modifier des bases de données relationnelles. Pour le pratiquer, j'ai installé le serveur MariaDB sur mon PC Debian : voici ma procédure, jusqu'à mes premières requêtes."
+  }
+};
+
+function openProc(key) {
+  const d = procIntros[key] || procIntros.mariadb;
+  document.getElementById('procEyebrow').textContent = d.eyebrow;
+  document.getElementById('procIntro').textContent   = d.intro;
+  document.getElementById('procBody').scrollTop = 0;
+  document.getElementById('procOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProc() {
+  document.getElementById('procOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function copyCode(btn) {
+  const code = btn.parentElement.querySelector('code').innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.innerHTML = '<i class="fas fa-check"></i>';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = '<i class="far fa-copy"></i>'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('skillModalOverlay').classList.remove('open');
+    closeProc();
+  }
+});
 
 // Animate skill bars on scroll
 const observer = new IntersectionObserver(entries => {
