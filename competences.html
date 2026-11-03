@@ -8,127 +8,61 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     .skill-card {
-      flex-shrink: 0;
-      width: 200px;
-      background: var(--gray-3);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--card-radius);
-      padding: 1.5rem 1rem 1.2rem;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
+      flex-shrink: 0; width: 200px; background: var(--gray-3);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: var(--card-radius);
+      padding: 1.5rem 1rem 1.2rem; cursor: pointer; position: relative; overflow: hidden;
       transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0.35s, box-shadow 0.35s ease;
       z-index: 1;
     }
     .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(to right, var(--red), #ff6b6b);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
+      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
     }
     .skill-card:hover {
-      transform: scale(1.2) translateY(-8%);
-      z-index: 100;
+      transform: scale(1.2) translateY(-8%); z-index: 100;
       transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0s, box-shadow 0.35s ease;
       box-shadow: 0 12px 40px rgba(0,0,0,0.7);
     }
     .skill-card:hover::before { transform: scaleX(1); }
-
     .row-track .skill-card:first-child:hover { transform-origin: left center; }
     .row-track .skill-card:last-child:hover  { transform-origin: right center; }
-
-    .skill-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
+    .skill-card-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
     .skill-card-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .skill-card-level {
-      font-size: 0.7rem;
-      color: #808080;
-      margin-bottom: 0.75rem;
-    }
-    .skill-card-bar {
-      height: 3px;
-      background: var(--gray-2);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-bottom: 0.75rem;
-    }
+    .skill-card-level { font-size: 0.7rem; color: #808080; margin-bottom: 0.75rem; }
+    .skill-card-bar { height: 3px; background: var(--gray-2); border-radius: 2px; overflow: hidden; margin-bottom: 0.75rem; }
     .skill-card-fill {
-      height: 100%;
-      background: linear-gradient(to right, var(--red), #ff6b6b);
-      border-radius: 2px;
-      width: 0;
+      height: 100%; background: linear-gradient(to right, var(--red), #ff6b6b); border-radius: 2px; width: 0;
       transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
     }
     .skill-card.animated .skill-card-fill { width: var(--pct); }
-
     .skill-card-tags {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateY(8px);
+      display: flex; gap: 4px; flex-wrap: wrap; opacity: 0; transform: translateY(8px);
       transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
     }
     .skill-card:hover .skill-card-tags { opacity: 1; transform: translateY(0); }
 
-    /* Tool grid */
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-      gap: 1rem;
-      padding: 1.5rem 4%;
-    }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 1rem; padding: 1.5rem 4%; }
     .tool-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 0.5rem;
-      background: var(--gray-3);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: var(--transition);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1rem 0.5rem;
+      background: var(--gray-3); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px;
+      cursor: pointer; transition: var(--transition);
     }
-    .tool-item:hover {
-      background: rgba(229,9,20,0.1);
-      border-color: rgba(229,9,20,0.3);
-      transform: translateY(-4px);
-    }
+    .tool-item:hover { background: rgba(229,9,20,0.1); border-color: rgba(229,9,20,0.3); transform: translateY(-4px); }
     .tool-item i { font-size: 2rem; }
     .tool-item span { font-size: 0.72rem; color: #aaa; text-align: center; }
 
-    /* Cert cards */
     .cert-card {
-      flex-shrink: 0;
-      width: 220px;
-      background: var(--gray-3);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--card-radius);
-      padding: 1.25rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0.35s;
-      z-index: 1;
-      cursor: pointer;
+      flex-shrink: 0; width: 220px; background: var(--gray-3); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--card-radius); padding: 1.25rem; position: relative; overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0.35s; z-index: 1; cursor: pointer;
     }
     .cert-card:hover {
-      transform: scale(1.15) translateY(-8%);
-      z-index: 100;
+      transform: scale(1.15) translateY(-8%); z-index: 100;
       transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), z-index 0s 0s;
       box-shadow: 0 12px 40px rgba(0,0,0,0.7);
     }
-    .cert-icon {
-      font-size: 3rem;
-      margin-bottom: 0.75rem;
-    }
+    .cert-icon { font-size: 3rem; margin-bottom: 0.75rem; }
     .cert-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
     .cert-issuer { font-size: 0.75rem; color: #808080; margin-bottom: 0.5rem; }
     .cert-status { font-size: 0.7rem; }
@@ -152,7 +86,6 @@
   <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero pt-nav">
   <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80');"></div>
   <div class="page-hero-content">
@@ -168,7 +101,7 @@
 
 <main style="padding-bottom:4rem;">
 
-  <!-- ══ RANGÉE 1 : Systèmes ══ -->
+  <!-- ══ Systèmes ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-server" style="color:#5599ff;margin-right:0.5rem;"></i> Systèmes</h2>
@@ -177,39 +110,34 @@
     <button class="row-arrow left"  onclick="scrollRow('rn2', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn2',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn2">
-
-      <div class="skill-card" style="--pct:82%" onclick="openSkill('winserver')">
+      <div class="skill-card" style="--pct:82%" onclick="openProc('winserver')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#0078D4;"><i class="fab fa-windows"></i></span>
         <div class="skill-card-name">Windows Server</div>
         <div class="skill-card-level">82% · Avancé</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags"></div>
+        <div class="skill-card-tags"><span class="card-tag">Active Directory</span></div>
       </div>
-
-      <div class="skill-card" style="--pct:75%" onclick="openSkill('linux')">
+      <div class="skill-card" style="--pct:75%" onclick="openProc('linux')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#FCC624;"><i class="fab fa-linux"></i></span>
         <div class="skill-card-name">Linux Debian</div>
         <div class="skill-card-level">75% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">Debian 12</span><span class="card-tag">Ubuntu</span>
-        </div>
+        <div class="skill-card-tags"><span class="card-tag">Debian 12</span><span class="card-tag">Ubuntu</span></div>
       </div>
-
-      <div class="skill-card" style="--pct:60%" onclick="openSkill('glpi')">
+      <div class="skill-card" style="--pct:60%" onclick="openProc('glpi')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#E50914;"><i class="fas fa-print"></i></span>
         <div class="skill-card-name">GLPI</div>
         <div class="skill-card-level">60% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">GLPI</span><span class="card-tag">OCS Inventory</span>
-        </div>
+        <div class="skill-card-tags"><span class="card-tag">GLPI</span><span class="card-tag">OCS Inventory</span></div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ RANGÉE 2 : Réseaux ══ -->
+  <!-- ══ Réseaux ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-network-wired" style="color:var(--red);margin-right:0.5rem;"></i> Réseaux</h2>
@@ -218,31 +146,26 @@
     <button class="row-arrow left"  onclick="scrollRow('rn1', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn1',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn1">
-
-      <div class="skill-card" style="--pct:80%" onclick="openSkill('routage')">
+      <div class="skill-card" style="--pct:80%" onclick="openProc('routage')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#ffa028;"><i class="fas fa-route"></i></span>
         <div class="skill-card-name">Routage IP</div>
         <div class="skill-card-level">80% · Avancé</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">LAN[réseau local]</span><span class="card-tag">WAN[réseau étendu]</span>
-        </div>
+        <div class="skill-card-tags"><span class="card-tag">LAN[réseau local]</span><span class="card-tag">WAN[réseau étendu]</span></div>
       </div>
-
-      <div class="skill-card" style="--pct:75%" onclick="openSkill('tcpip')">
+      <div class="skill-card" style="--pct:75%" onclick="openProc('tcpip')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-globe"></i></span>
         <div class="skill-card-name">TCP/IP & DNS</div>
         <div class="skill-card-level">75% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">IPv4</span><span class="card-tag">IPv6</span><span class="card-tag">PLRTSPA</span>
-        </div>
+        <div class="skill-card-tags"><span class="card-tag">IPv4</span><span class="card-tag">IPv6</span><span class="card-tag">PLRTSPA</span></div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ RANGÉE 3 : Bases de données ══ -->
+  <!-- ══ Bases de données ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-database" style="color:#C0765A;margin-right:0.5rem;"></i> Bases de données</h2>
@@ -251,22 +174,18 @@
     <button class="row-arrow left"  onclick="scrollRow('rndb', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rndb',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rndb">
-
-      <div class="skill-card has-proc" style="--pct:45%" onclick="openProc('sql')">
+      <div class="skill-card" style="--pct:45%" onclick="openProc('sql')">
         <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#C0765A;"><i class="fas fa-table"></i></span>
         <div class="skill-card-name">SQL</div>
         <div class="skill-card-level">45% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">MariaDB</span><span class="card-tag">Requêtes</span>
-        </div>
+        <div class="skill-card-tags"><span class="card-tag">MariaDB</span><span class="card-tag">Requêtes</span></div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ RANGÉE 4 : Sécurité ══ -->
+  <!-- ══ Sécurité ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-shield-alt" style="color:#46d369;margin-right:0.5rem;"></i> Sécurité</h2>
@@ -275,21 +194,18 @@
     <button class="row-arrow left"  onclick="scrollRow('rn3', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn3',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn3">
-
-      <div class="skill-card" style="--pct:60%" onclick="openSkill('pentest')">
+      <div class="skill-card" style="--pct:60%" onclick="openProc('pentest')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#5599ff;"><i class="fas fa-user-secret"></i></span>
         <div class="skill-card-name">Pentest basique</div>
         <div class="skill-card-level">60% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
-        <div class="skill-card-tags">
-          <span class="card-tag">Capture the flag</span><span class="card-tag">Wireshark</span><span class="card-tag">Kali</span>
-        </div>
+        <div class="skill-card-tags"><span class="card-tag">Capture the flag</span><span class="card-tag">Wireshark</span><span class="card-tag">Kali</span></div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ RANGÉE 5 : Virtualisation ══ -->
+  <!-- ══ Virtualisation ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-cube" style="color:#ffa028;margin-right:0.5rem;"></i> Virtualisation</h2>
@@ -298,27 +214,26 @@
     <button class="row-arrow left"  onclick="scrollRow('rn4', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn4',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn4">
-
-      <div class="skill-card" style="--pct:70%" onclick="openSkill('virtualbox')">
+      <div class="skill-card" style="--pct:70%" onclick="openProc('virtualbox')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#183A52;"><i class="fas fa-box"></i></span>
         <div class="skill-card-name">VirtualBox</div>
         <div class="skill-card-level">70% · Intermédiaire</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags"><span class="card-tag">Windows</span><span class="card-tag">Linux</span></div>
       </div>
-
-      <div class="skill-card" style="--pct:55%" onclick="openSkill('vmwindows')">
+      <div class="skill-card" style="--pct:55%" onclick="openProc('vmwindows')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#0078D4;"><i class="fab fa-windows"></i></span>
         <div class="skill-card-name">VM Windows</div>
         <div class="skill-card-level">55% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags"><span class="card-tag">Windows 10/11</span></div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ RANGÉE 6 : Scripting ══ -->
+  <!-- ══ Scripting ══ -->
   <section class="row-section reveal">
     <div class="section-label">
       <h2><i class="fas fa-code" style="color:#ffa028;margin-right:0.5rem;"></i> Scripting &amp; Automatisation</h2>
@@ -326,31 +241,30 @@
     <button class="row-arrow left"  onclick="scrollRow('rn5', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rn5',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rn5">
-
-      <div class="skill-card" style="--pct:40%" onclick="openSkill('powershell')">
-        <span class="skill-card-icon" style="color:#012456;"><i class="fas fa-terminal"></i></span>
+      <div class="skill-card" style="--pct:40%" onclick="openProc('powershell')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
+        <span class="skill-card-icon" style="color:#2671BE;"><i class="fas fa-terminal"></i></span>
         <div class="skill-card-name">PowerShell</div>
         <div class="skill-card-level">40% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags"></div>
       </div>
-
-      <div class="skill-card" style="--pct:40%" onclick="openSkill('python')">
+      <div class="skill-card" style="--pct:40%" onclick="openProc('python')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#3572A5;"><i class="fab fa-python"></i></span>
         <div class="skill-card-name">Python</div>
         <div class="skill-card-level">40% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags"></div>
       </div>
-
-      <div class="skill-card" style="--pct:40%" onclick="openSkill('bash')">
+      <div class="skill-card" style="--pct:40%" onclick="openProc('bash')">
+        <span class="proc-flag"><i class="fas fa-book-open"></i> Procédure</span>
         <span class="skill-card-icon" style="color:#89e051;"><i class="fas fa-terminal"></i></span>
         <div class="skill-card-name">Bash</div>
         <div class="skill-card-level">40% · Débutant</div>
         <div class="skill-card-bar"><div class="skill-card-fill"></div></div>
         <div class="skill-card-tags"></div>
       </div>
-
     </div>
   </section>
 
@@ -358,15 +272,12 @@
   <section class="reveal" style="margin-bottom:3rem;">
     <div class="section-label"><h2><i class="fas fa-tools" style="color:#808080;margin-right:0.5rem;"></i> Outils &amp; Logiciels</h2></div>
     <div class="tool-grid">
-      <div class="tool-item"><i class="fas fa-network-wired" style="color:#E50914;"></i><span>Packet Tracer</span></div>
-      <div class="tool-item"><i class="fas fa-eye" style="color:#1679A8;"></i><span>Wireshark</span></div>
-      <div class="tool-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Github</span></div>
-      <div class="tool-item"><i class="fas fa-code-branch" style="color:#aaa;"></i><span>VS Code</span></div>
-      <div class="tool-item"><i class="fas fa-ticket-alt" style="color:#ffa028;"></i><span>GLPI</span></div>
-      <div class="tool-item has-proc" onclick="openProc('mariadb')" title="Voir ma procédure d'installation">
-        <span class="proc-dot"></span>
-        <i class="fas fa-database" style="color:#C0765A;"></i><span>MariaDB</span>
-      </div>
+      <div class="tool-item has-proc" onclick="openProc('packettracer')"><span class="proc-dot"></span><i class="fas fa-network-wired" style="color:#E50914;"></i><span>Packet Tracer</span></div>
+      <div class="tool-item has-proc" onclick="openProc('wireshark')"><span class="proc-dot"></span><i class="fas fa-eye" style="color:#1679A8;"></i><span>Wireshark</span></div>
+      <div class="tool-item has-proc" onclick="openProc('github')"><span class="proc-dot"></span><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Github</span></div>
+      <div class="tool-item has-proc" onclick="openProc('vscode')"><span class="proc-dot"></span><i class="fas fa-code-branch" style="color:#aaa;"></i><span>VS Code</span></div>
+      <div class="tool-item has-proc" onclick="openProc('glpi')"><span class="proc-dot"></span><i class="fas fa-ticket-alt" style="color:#ffa028;"></i><span>GLPI</span></div>
+      <div class="tool-item has-proc" onclick="openProc('mariadb')"><span class="proc-dot"></span><i class="fas fa-database" style="color:#C0765A;"></i><span>MariaDB</span></div>
     </div>
   </section>
 
@@ -378,21 +289,18 @@
     <button class="row-arrow left"  onclick="scrollRow('rncert', -1)"><i class="fas fa-chevron-left"></i></button>
     <button class="row-arrow right" onclick="scrollRow('rncert',  1)"><i class="fas fa-chevron-right"></i></button>
     <div class="row-track" id="rncert">
-
       <div class="cert-card">
         <div class="cert-icon" style="color:#1BA0D7;"><i class="fas fa-certificate"></i></div>
         <div class="cert-name">CCNA (en cours)</div>
         <div class="cert-issuer">Cisco Networking Academy</div>
         <span class="badge badge-orange">En préparation</span>
       </div>
-
       <div class="cert-card">
         <div class="cert-icon" style="color:#E50914;"><i class="fas fa-graduation-cap"></i></div>
         <div class="cert-name">BTS SIO SISR</div>
         <div class="cert-issuer">Éducation Nationale</div>
         <span class="badge badge-orange">Juin 2027</span>
       </div>
-
     </div>
   </section>
 
@@ -416,159 +324,736 @@
 </main>
 
 <!-- ═══════════════════════════════════════════
-     MODAL COMPÉTENCE (petite fiche)
+     GRANDE BULLE PROCÉDURE (commune à tout)
 ═══════════════════════════════════════════ -->
-<div class="modal-overlay" id="skillModalOverlay" onclick="closeSkill(event)">
-  <div class="modal" id="skillModal">
-    <div class="modal-thumb">
-      <div id="skillModalBg" style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:5rem;color:rgba(255,255,255,0.15);"></div>
-      <div class="modal-thumb-gradient"></div>
-      <button class="modal-thumb-close" onclick="closeSkill()"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body">
-      <h2 id="skillModalTitle">Titre</h2>
-      <p class="modal-meta" id="skillModalMeta">Catégorie</p>
-      <p class="modal-desc" id="skillModalDesc">Description.</p>
-      <div id="skillModalTags" class="card-tags" style="gap:6px;"></div>
+<div class="proc-overlay" id="procOverlay" onclick="if(event.target===this) closeProc()">
+  <div class="proc-modal" role="dialog" aria-modal="true" aria-labelledby="procTitle">
+    <header class="proc-header">
+      <div class="proc-header-icon" id="procIcon"><i class="fas fa-book"></i></div>
+      <div class="proc-header-text">
+        <p class="proc-eyebrow" id="procEyebrow">Procédure</p>
+        <h2 id="procTitle">Titre</h2>
+      </div>
+      <button class="proc-close" onclick="closeProc()" aria-label="Fermer"><i class="fas fa-times"></i></button>
+    </header>
+    <div class="proc-body" id="procBody">
+      <p class="proc-intro" id="procIntro"></p>
+      <div class="proc-notice hidden" id="procNotice">
+        <i class="fas fa-hourglass-half"></i>
+        <span><strong>Procédure prévisionnelle</strong> — elle sera mise à jour avec mes captures d'écran une fois l'installation réalisée.</span>
+      </div>
+      <div class="proc-meta-grid" id="procMeta"></div>
+      <div id="procContent"></div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     MODAL PROCÉDURE (grande bulle scrollable)
-═══════════════════════════════════════════ -->
-<div class="proc-overlay" id="procOverlay" onclick="if(event.target===this) closeProc()">
-  <div class="proc-modal" role="dialog" aria-modal="true" aria-labelledby="procTitle">
+<!-- ═══════════════════════════════════════════════════════════
+     CONTENU DES PROCÉDURES — un <template> par procédure.
+     Pour ajouter une capture : <div class="proc-shot"><img src="capture.png" alt=""></div>
+     Les boutons "copier" sont ajoutés automatiquement sur chaque bloc de code.
+═══════════════════════════════════════════════════════════ -->
 
-    <header class="proc-header">
-      <div class="proc-header-icon"><i class="fas fa-database"></i></div>
-      <div class="proc-header-text">
-        <p class="proc-eyebrow" id="procEyebrow">Procédure</p>
-        <h2 id="procTitle">Installation de MariaDB sur Debian</h2>
-      </div>
-      <button class="proc-close" onclick="closeProc()" aria-label="Fermer"><i class="fas fa-times"></i></button>
-    </header>
+<!-- ───── WINDOWS SERVER ───── -->
+<template id="tpl-winserver">
+  <h3 class="proc-section-title">Objectif</h3>
+  <p>Installer Windows Server dans une machine virtuelle VirtualBox pour disposer d'un serveur d'entraînement.</p>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Télécharger l'ISO</h4>
+      <p>Sur le <strong>Microsoft Evaluation Center</strong>, télécharger l'ISO de Windows Server (version d'évaluation gratuite 180 jours), en français.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Créer la VM dans VirtualBox</h4>
+      <p><em>Machine → Nouvelle</em> : nom <code>SRV-AD</code>, type Microsoft Windows, sélectionner l'ISO et cocher <em>Skip Unattended Installation</em>.</p>
+      <table class="proc-table">
+        <thead><tr><th>Ressource</th><th>Valeur conseillée</th></tr></thead>
+        <tbody>
+          <tr><td>RAM</td><td>4 Go</td></tr>
+          <tr><td>Processeurs</td><td>2</td></tr>
+          <tr><td>Disque</td><td>60 Go (dynamique)</td></tr>
+          <tr><td>Réseau</td><td>Réseau interne ou NAT</td></tr>
+        </tbody>
+      </table>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Lancer l'installation</h4>
+      <p>Démarrer la VM, choisir la langue et le clavier français, puis <em>Installer maintenant</em>.</p>
+      <p>Choisir l'édition <strong>Standard (expérience de bureau)</strong> pour avoir l'interface graphique, puis l'installation <strong>personnalisée</strong> sur le disque vierge.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Définir le mot de passe Administrateur</h4>
+      <p>À la fin de l'installation, saisir un mot de passe complexe pour le compte <code>Administrateur</code>, puis se connecter (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Suppr</kbd> = <em>Entrée</em> + <kbd>Suppr</kbd> dans VirtualBox).</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Premiers réglages</h4>
+      <p>Dans le <em>Gestionnaire de serveur → Serveur local</em> : renommer le serveur, donner une IP fixe, puis redémarrer. Équivalent en PowerShell :</p>
+      <pre class="proc-code"><code>Rename-Computer -NewName "SRV-AD" -Restart
+New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress 192.168.10.1 -PrefixLength 24
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 127.0.0.1</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Ensuite, le rôle <em>Services AD DS</em> s'ajoute via <em>Gérer → Ajouter des rôles et fonctionnalités</em>.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
 
-    <div class="proc-body" id="procBody">
+<!-- ───── LINUX DEBIAN ───── -->
+<template id="tpl-linux">
+  <h3 class="proc-section-title">Objectif</h3>
+  <p>Installer Debian dans une machine virtuelle et la préparer pour l'administration en ligne de commande.</p>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Télécharger l'ISO</h4>
+      <p>Sur <strong>debian.org</strong>, télécharger l'image <em>netinst</em> (amd64), légère : les paquets sont récupérés pendant l'installation.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Créer la VM</h4>
+      <p>Dans VirtualBox : type Linux / Debian 64-bit, 2 Go de RAM, 2 CPU, disque de 20 Go, cocher <em>Skip Unattended Installation</em>.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Installation guidée</h4>
+      <p>Choisir <em>Graphical install</em>, puis dans l'ordre :</p>
+      <table class="proc-table">
+        <thead><tr><th>Écran</th><th>Choix</th></tr></thead>
+        <tbody>
+          <tr><td>Langue / pays / clavier</td><td>Français / France / Français</td></tr>
+          <tr><td>Nom de machine</td><td>ex. <code>debian-srv</code></td></tr>
+          <tr><td>Mot de passe root</td><td>mot de passe fort</td></tr>
+          <tr><td>Utilisateur</td><td>création de mon compte</td></tr>
+          <tr><td>Partitionnement</td><td>Assisté – disque entier, tout dans une partition</td></tr>
+          <tr><td>Logiciels</td><td>Serveur SSH + utilitaires usuels (bureau optionnel)</td></tr>
+          <tr><td>GRUB</td><td>Oui, sur <code>/dev/sda</code></td></tr>
+        </tbody>
+      </table>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Après le redémarrage</h4>
+      <p>Se connecter en root, mettre à jour et donner les droits sudo à mon utilisateur :</p>
+      <pre class="proc-code"><code>su -
+apt update &amp;&amp; apt upgrade -y
+apt install sudo -y
+usermod -aG sudo daniella</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Se déconnecter puis se reconnecter pour que le groupe sudo soit pris en compte.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Vérifier</h4>
+      <pre class="proc-code"><code>cat /etc/debian_version
+ip a
+sudo systemctl status ssh</code></pre>
+    </li>
+  </ol>
+  <h3 class="proc-section-title">Pour aller plus loin : pile LAMP (Ubuntu / Debian)</h3>
+  <pre class="proc-code"><code>sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql -y</code></pre>
+</template>
 
-      <!-- Intro qui change selon la carte cliquée (SQL ou MariaDB) -->
-      <p class="proc-intro" id="procIntro"></p>
+<!-- ───── GLPI ───── -->
+<template id="tpl-glpi">
+  <h3 class="proc-section-title">Objectif</h3>
+  <p>Installer GLPI sur une VM Debian : serveur web Apache, PHP, base de données MariaDB, puis l'assistant d'installation web.</p>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Installer Apache, MariaDB et PHP</h4>
+      <pre class="proc-code"><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install apache2 mariadb-server -y
+sudo apt install php libapache2-mod-php php-mysql php-curl php-gd php-intl php-xml php-mbstring php-zip php-bz2 php-ldap php-apcu -y</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Créer la base de données GLPI</h4>
+      <pre class="proc-code"><code>sudo mariadb-secure-installation
+sudo mariadb</code></pre>
+      <pre class="proc-code"><code>CREATE DATABASE glpi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'MotDePasseFort!';
+GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Télécharger GLPI</h4>
+      <p>Récupérer le lien de la dernière version sur la page <em>Releases</em> du dépôt GitHub <code>glpi-project/glpi</code>, puis (remplacer <code>X.Y.Z</code>) :</p>
+      <pre class="proc-code"><code>cd /tmp
+wget https://github.com/glpi-project/glpi/releases/download/X.Y.Z/glpi-X.Y.Z.tgz
+sudo tar -xzf glpi-X.Y.Z.tgz -C /var/www/
+sudo chown -R www-data:www-data /var/www/glpi</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Configurer Apache</h4>
+      <p>Créer le fichier du site :</p>
+      <pre class="proc-code"><code>sudo nano /etc/apache2/sites-available/glpi.conf</code></pre>
+      <pre class="proc-code"><code>&lt;VirtualHost *:80&gt;
+    ServerName glpi.local
+    DocumentRoot /var/www/glpi/public
+    &lt;Directory /var/www/glpi/public&gt;
+        Require all granted
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.php [QSA,L]
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+      <pre class="proc-code"><code>sudo a2enmod rewrite
+sudo a2dissite 000-default.conf
+sudo a2ensite glpi.conf
+sudo systemctl restart apache2</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Assistant d'installation web</h4>
+      <p>Depuis un navigateur : <code>http://IP-de-la-VM</code>. Choisir le français, accepter la licence, <em>Installer</em>, puis renseigner la base : serveur <code>localhost</code>, utilisateur <code>glpi</code>, base <code>glpi</code>.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Sécuriser après installation</h4>
+      <table class="proc-table">
+        <thead><tr><th>Compte par défaut</th><th>Mot de passe</th></tr></thead>
+        <tbody>
+          <tr><td>glpi (super-admin)</td><td>glpi</td></tr>
+          <tr><td>tech</td><td>tech</td></tr>
+          <tr><td>normal</td><td>normal</td></tr>
+          <tr><td>post-only</td><td>postonly</td></tr>
+        </tbody>
+      </table>
+      <p>Changer ces mots de passe dès la première connexion, puis supprimer le fichier d'installation :</p>
+      <pre class="proc-code"><code>sudo rm /var/www/glpi/install/install.php</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
 
-      <div class="proc-notice">
-        <i class="fas fa-hourglass-half"></i>
-        <span><strong>Procédure prévisionnelle</strong> — elle sera mise à jour avec mes captures d'écran une fois l'installation réalisée sur mon PC Debian.</span>
-      </div>
+<!-- ───── ROUTAGE IP ───── -->
+<template id="tpl-routage">
+  <h3 class="proc-section-title">Objectif</h3>
+  <p>Relier deux réseaux locaux avec deux routeurs Cisco dans Packet Tracer grâce au routage statique.</p>
+  <table class="proc-table">
+    <thead><tr><th>Équipement</th><th>Interface</th><th>Adresse</th></tr></thead>
+    <tbody>
+      <tr><td>R1</td><td>G0/0 (LAN 1)</td><td>192.168.1.254/24</td></tr>
+      <tr><td>R1</td><td>G0/1 (lien WAN)</td><td>10.0.0.1/30</td></tr>
+      <tr><td>R2</td><td>G0/1 (lien WAN)</td><td>10.0.0.2/30</td></tr>
+      <tr><td>R2</td><td>G0/0 (LAN 2)</td><td>192.168.2.254/24</td></tr>
+    </tbody>
+  </table>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Câbler la maquette</h4>
+      <p>PC1 – Switch1 – R1 ⟷ R2 – Switch2 – PC2. Câble droit vers les switchs, câble croisé (ou automatique) entre routeurs.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Configurer les interfaces de R1</h4>
+      <pre class="proc-code"><code>enable
+configure terminal
+interface g0/0
+ ip address 192.168.1.254 255.255.255.0
+ no shutdown
+interface g0/1
+ ip address 10.0.0.1 255.255.255.252
+ no shutdown
+exit</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Ajouter la route statique sur R1</h4>
+      <pre class="proc-code"><code>ip route 192.168.2.0 255.255.255.0 10.0.0.2
+end
+write memory</code></pre>
+      <p>Faire l'équivalent sur R2 avec <code>ip route 192.168.1.0 255.255.255.0 10.0.0.1</code>.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Configurer les PC</h4>
+      <p>PC1 : 192.168.1.1/24, passerelle 192.168.1.254. PC2 : 192.168.2.1/24, passerelle 192.168.2.254.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Vérifier</h4>
+      <pre class="proc-code"><code>show ip route
+show ip interface brief
+ping 192.168.2.1</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Dans la table de routage, <code>C</code> = réseau directement connecté, <code>S</code> = route statique.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
 
-      <!-- ═════════ CONTENU DE LA PROCÉDURE (à modifier ici) ═════════ -->
-      <div class="proc-meta-grid">
-        <div><span>Système</span><strong>Debian 12 / 13</strong></div>
-        <div><span>Logiciel</span><strong>MariaDB Server</strong></div>
-        <div><span>Droits</span><strong>sudo / root</strong></div>
-        <div><span>Durée</span><strong>~ 15 min</strong></div>
-      </div>
+<!-- ───── TCP/IP & DNS ───── -->
+<template id="tpl-tcpip">
+  <h3 class="proc-section-title">Le modèle OSI</h3>
+  <table class="proc-table">
+    <thead><tr><th>#</th><th>Couche</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td>7</td><td>Application</td><td>Logiciels de l'utilisateur (navigateur, mail…)</td></tr>
+      <tr><td>6</td><td>Présentation</td><td>Format des données (chiffrement, compression)</td></tr>
+      <tr><td>5</td><td>Session</td><td>Ouverture / fermeture des échanges</td></tr>
+      <tr><td>4</td><td>Transport</td><td>Fiabilité et découpage (TCP / UDP)</td></tr>
+      <tr><td>3</td><td>Réseau</td><td>Adressage IP et routage</td></tr>
+      <tr><td>2</td><td>Liaison</td><td>Adressage local (MAC), détection d'erreurs</td></tr>
+      <tr><td>1</td><td>Physique</td><td>Signaux : câbles, ondes</td></tr>
+    </tbody>
+  </table>
+  <h3 class="proc-section-title">Mise en pratique : IP fixe et DNS sur Debian</h3>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Repérer l'interface réseau</h4>
+      <pre class="proc-code"><code>ip a</code></pre>
+      <p>Noter le nom de la carte (ex. <code>enp0s3</code>).</p>
+    </li>
+    <li class="proc-step">
+      <h4>Donner une IP fixe</h4>
+      <pre class="proc-code"><code>sudo nano /etc/network/interfaces</code></pre>
+      <pre class="proc-code"><code>auto enp0s3
+iface enp0s3 inet static
+    address 192.168.1.10/24
+    gateway 192.168.1.254</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Renseigner le serveur DNS</h4>
+      <pre class="proc-code"><code>sudo nano /etc/resolv.conf</code></pre>
+      <pre class="proc-code"><code>nameserver 192.168.1.254
+nameserver 1.1.1.1</code></pre>
+      <pre class="proc-code"><code>sudo systemctl restart networking</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Tester</h4>
+      <pre class="proc-code"><code>sudo apt install dnsutils -y
+ping -c 4 192.168.1.254
+nslookup debian.org
+dig debian.org</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Si le ping vers une IP marche mais pas vers un nom, le problème vient du DNS.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
 
-      <h3 class="proc-section-title">Objectif</h3>
-      <p>Installer un serveur de bases de données MariaDB sur ma machine Debian, le sécuriser, puis créer une base et un utilisateur dédié pour pratiquer le SQL.</p>
-
-      <ol class="proc-steps">
-
-        <li class="proc-step">
-          <h4>Mettre à jour le système</h4>
-          <p>Avant toute installation, on met à jour la liste des paquets et les paquets déjà installés.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo apt update && sudo apt upgrade -y</code></pre>
-          <div class="proc-shot">Capture d'écran à ajouter</div>
-        </li>
-
-        <li class="proc-step">
-          <h4>Installer MariaDB</h4>
-          <p>MariaDB est disponible directement dans les dépôts officiels de Debian.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo apt install mariadb-server mariadb-client -y</code></pre>
-          <div class="proc-shot">Capture d'écran à ajouter</div>
-        </li>
-
-        <li class="proc-step">
-          <h4>Vérifier que le service tourne</h4>
-          <p>On contrôle que le service est actif et on l'active au démarrage de la machine.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo systemctl status mariadb
+<!-- ───── SQL / MARIADB ───── -->
+<template id="tpl-mariadb">
+  <h3 class="proc-section-title">Objectif</h3>
+  <p>Installer un serveur MariaDB sur ma machine Debian, le sécuriser, puis créer une base et un utilisateur dédié pour pratiquer le SQL.</p>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Mettre à jour le système</h4>
+      <pre class="proc-code"><code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Installer MariaDB</h4>
+      <pre class="proc-code"><code>sudo apt install mariadb-server mariadb-client -y</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Vérifier que le service tourne</h4>
+      <pre class="proc-code"><code>sudo systemctl status mariadb
 sudo systemctl enable mariadb
 mariadb --version</code></pre>
-          <p class="proc-tip"><i class="fas fa-lightbulb"></i> La ligne <em>Active: active (running)</em> en vert confirme que le serveur fonctionne. Touche <kbd>q</kbd> pour quitter l'affichage.</p>
-          <div class="proc-shot">Capture d'écran à ajouter</div>
-        </li>
-
-        <li class="proc-step">
-          <h4>Sécuriser l'installation</h4>
-          <p>Un script fourni avec MariaDB permet de supprimer les réglages par défaut peu sûrs.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo mariadb-secure-installation</code></pre>
-          <table class="proc-table">
-            <thead><tr><th>Question posée</th><th>Réponse</th></tr></thead>
-            <tbody>
-              <tr><td>Enter current password for root</td><td>Entrée (vide)</td></tr>
-              <tr><td>Switch to unix_socket authentication</td><td>n</td></tr>
-              <tr><td>Change the root password?</td><td>Y (choisir un mot de passe fort)</td></tr>
-              <tr><td>Remove anonymous users?</td><td>Y</td></tr>
-              <tr><td>Disallow root login remotely?</td><td>Y</td></tr>
-              <tr><td>Remove test database?</td><td>Y</td></tr>
-              <tr><td>Reload privilege tables now?</td><td>Y</td></tr>
-            </tbody>
-          </table>
-          <div class="proc-shot">Capture d'écran à ajouter</div>
-        </li>
-
-        <li class="proc-step">
-          <h4>Se connecter à MariaDB</h4>
-          <p>On ouvre la console SQL en tant qu'administrateur.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>sudo mariadb</code></pre>
-          <p class="proc-tip"><i class="fas fa-lightbulb"></i> L'invite devient <em>MariaDB [(none)]&gt;</em> : on peut maintenant taper des requêtes SQL.</p>
-        </li>
-
-        <li class="proc-step">
-          <h4>Créer une base et un utilisateur</h4>
-          <p>On évite de travailler avec root : on crée une base de test et un utilisateur qui n'a des droits que sur elle.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>CREATE DATABASE portfolio;
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> <em>Active: active (running)</em> confirme que le serveur fonctionne. <kbd>q</kbd> pour quitter.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Sécuriser l'installation</h4>
+      <pre class="proc-code"><code>sudo mariadb-secure-installation</code></pre>
+      <table class="proc-table">
+        <thead><tr><th>Question posée</th><th>Réponse</th></tr></thead>
+        <tbody>
+          <tr><td>Enter current password for root</td><td>Entrée (vide)</td></tr>
+          <tr><td>Switch to unix_socket authentication</td><td>n</td></tr>
+          <tr><td>Change the root password?</td><td>Y (mot de passe fort)</td></tr>
+          <tr><td>Remove anonymous users?</td><td>Y</td></tr>
+          <tr><td>Disallow root login remotely?</td><td>Y</td></tr>
+          <tr><td>Remove test database?</td><td>Y</td></tr>
+          <tr><td>Reload privilege tables now?</td><td>Y</td></tr>
+        </tbody>
+      </table>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Créer une base et un utilisateur</h4>
+      <pre class="proc-code"><code>sudo mariadb</code></pre>
+      <pre class="proc-code"><code>CREATE DATABASE portfolio;
 CREATE USER 'daniella'@'localhost' IDENTIFIED BY 'MotDePasseFort!';
 GRANT ALL PRIVILEGES ON portfolio.* TO 'daniella'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;</code></pre>
-          <div class="proc-shot">Capture d'écran à ajouter</div>
-        </li>
-
-        <li class="proc-step">
-          <h4>Tester avec quelques requêtes SQL</h4>
-          <p>On se reconnecte avec le nouvel utilisateur et on crée une première table.</p>
-          <pre class="proc-code"><button class="copy-btn" onclick="copyCode(this)"><i class="far fa-copy"></i></button><code>mariadb -u daniella -p
-
-USE portfolio;
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Premières requêtes SQL</h4>
+      <pre class="proc-code"><code>mariadb -u daniella -p</code></pre>
+      <pre class="proc-code"><code>USE portfolio;
 CREATE TABLE competences (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(50) NOT NULL,
   niveau INT
 );
 INSERT INTO competences (nom, niveau) VALUES ('SQL', 45), ('Linux', 75);
-SELECT * FROM competences;</code></pre>
-          <div class="proc-shot">Capture d'écran à ajouter</div>
-        </li>
+SELECT * FROM competences WHERE niveau &gt; 50;
+UPDATE competences SET niveau = 50 WHERE nom = 'SQL';
+DELETE FROM competences WHERE id = 2;</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+  <h3 class="proc-section-title">Commandes utiles</h3>
+  <table class="proc-table">
+    <thead><tr><th>Commande</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td><code>SHOW DATABASES;</code></td><td>Lister les bases</td></tr>
+      <tr><td><code>SHOW TABLES;</code></td><td>Lister les tables</td></tr>
+      <tr><td><code>DESCRIBE competences;</code></td><td>Structure d'une table</td></tr>
+      <tr><td><code>sudo systemctl restart mariadb</code></td><td>Redémarrer le serveur</td></tr>
+    </tbody>
+  </table>
+  <h3 class="proc-section-title">Bilan</h3>
+  <p>À compléter après l'installation : difficultés rencontrées, ce que j'ai appris, prochaines étapes.</p>
+</template>
 
-      </ol>
+<!-- ───── PENTEST ───── -->
+<template id="tpl-pentest">
+  <div class="proc-notice proc-warn">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Ces outils s'utilisent <strong>uniquement</strong> sur des machines prévues pour l'exercice (CTF, labo de classe). Attaquer un système sans autorisation est illégal (art. 323-1 du Code pénal).</span>
+  </div>
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Télécharger Kali Linux pour VirtualBox</h4>
+      <p>Sur <strong>kali.org</strong>, section <em>Virtual Machines</em>, télécharger l'image pré-construite <em>VirtualBox</em> (archive <code>.7z</code>).</p>
+    </li>
+    <li class="proc-step">
+      <h4>Importer la VM</h4>
+      <p>Extraire l'archive (7-Zip), puis double-cliquer sur le fichier <code>.vbox</code> : la VM apparaît dans VirtualBox. Mettre son réseau en <em>Réseau interne</em> avec les machines cibles du CTF.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Premier démarrage</h4>
+      <p>Identifiants par défaut : <code>kali</code> / <code>kali</code>. Mettre à jour :</p>
+      <pre class="proc-code"><code>sudo apt update &amp;&amp; sudo apt full-upgrade -y
+passwd</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Reconnaissance sur la machine du CTF</h4>
+      <pre class="proc-code"><code>ip a
+nmap -sn 192.168.56.0/24
+nmap -sV 192.168.56.101</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> <code>-sn</code> découvre les machines actives, <code>-sV</code> liste les services et leurs versions.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Analyser le trafic</h4>
+      <p>Lancer Wireshark sur l'interface du labo pour observer les échanges (voir la fiche Wireshark).</p>
+    </li>
+  </ol>
+</template>
 
-      <h3 class="proc-section-title">Commandes utiles</h3>
+<!-- ───── VIRTUALBOX ───── -->
+<template id="tpl-virtualbox">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Télécharger VirtualBox</h4>
+      <p>Sur <strong>virtualbox.org</strong> → <em>Downloads</em> : l'installateur Windows, ou le paquet <code>.deb</code> correspondant à ma version de Debian.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Installer</h4>
+      <p><strong>Windows :</strong> lancer l'exécutable et garder les options par défaut (la carte réseau est coupée quelques secondes).</p>
+      <p><strong>Debian :</strong></p>
+      <pre class="proc-code"><code>cd ~/Téléchargements
+sudo apt install ./virtualbox-*.deb -y
+sudo usermod -aG vboxusers $USER</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Créer une machine virtuelle</h4>
+      <p><em>Nouvelle</em> → nom, ISO, puis RAM, CPU et taille de disque. Le disque en <em>allocation dynamique</em> ne prend de place qu'au fur et à mesure.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Choisir le mode réseau</h4>
+      <table class="proc-table">
+        <thead><tr><th>Mode</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>NAT</td><td>Accès Internet, VM invisible du réseau</td></tr>
+          <tr><td>Accès par pont</td><td>VM sur le même réseau que le PC physique</td></tr>
+          <tr><td>Réseau interne</td><td>VMs entre elles uniquement (labo isolé)</td></tr>
+          <tr><td>Réseau privé hôte</td><td>VMs + PC hôte, sans Internet</td></tr>
+        </tbody>
+      </table>
+    </li>
+    <li class="proc-step">
+      <h4>Guest Additions et snapshots</h4>
+      <p>Dans la VM démarrée : <em>Périphériques → Insérer l'image CD des Additions invité</em> (plein écran, presse-papier partagé).</p>
+      <p>Avant un test risqué : <em>Machine → Prendre un instantané</em> pour pouvoir revenir en arrière.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── VM WINDOWS ───── -->
+<template id="tpl-vmwindows">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Télécharger l'ISO Windows</h4>
+      <p>Sur le site de Microsoft (<em>Télécharger Windows 11</em>), choisir <em>Télécharger l'image disque (ISO)</em>, édition multi, langue français.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Créer la VM</h4>
+      <p>Dans VirtualBox 7 : type Windows 11 (64-bit), cocher <em>Skip Unattended Installation</em>. VirtualBox active automatiquement l'EFI, le TPM 2.0 et le Secure Boot demandés par Windows 11.</p>
+      <table class="proc-table">
+        <thead><tr><th>Ressource</th><th>Minimum</th></tr></thead>
+        <tbody>
+          <tr><td>RAM</td><td>4 Go</td></tr>
+          <tr><td>CPU</td><td>2</td></tr>
+          <tr><td>Disque</td><td>64 Go</td></tr>
+        </tbody>
+      </table>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Installer Windows</h4>
+      <p>Langue française → <em>Installer</em> → <em>Je n'ai pas de clé de produit</em> → édition (ex. Pro) → installation personnalisée sur le disque vierge.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Finaliser</h4>
+      <p>Créer le compte utilisateur, puis installer les <strong>Guest Additions</strong> (<em>Périphériques → Insérer l'image CD des Additions invité</em>, lancer <code>VBoxWindowsAdditions.exe</code>) et redémarrer.</p>
+      <p>Prendre un <strong>instantané</strong> « installation propre » pour repartir de zéro à tout moment.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── POWERSHELL ───── -->
+<template id="tpl-powershell">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Ouvrir PowerShell</h4>
+      <p>Windows PowerShell 5.1 est déjà installé. Pour la version récente (PowerShell 7), dans un terminal :</p>
+      <pre class="proc-code"><code>winget install --id Microsoft.PowerShell --source winget</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Autoriser l'exécution de mes scripts</h4>
+      <pre class="proc-code"><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Get-ExecutionPolicy</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Premier script</h4>
+      <p>Créer <code>infos.ps1</code> :</p>
+      <pre class="proc-code"><code>$nom = $env:COMPUTERNAME
+Write-Host "Machine : $nom"
+Get-NetIPAddress -AddressFamily IPv4 | Select-Object InterfaceAlias, IPAddress
+foreach ($s in Get-Service | Where-Object Status -eq 'Running' | Select-Object -First 5) {
+    Write-Host "Service actif : $($s.Name)"
+}</code></pre>
+      <pre class="proc-code"><code>.\infos.ps1</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Commandes utiles</h4>
       <table class="proc-table">
         <thead><tr><th>Commande</th><th>Rôle</th></tr></thead>
         <tbody>
-          <tr><td><code>SHOW DATABASES;</code></td><td>Lister les bases</td></tr>
-          <tr><td><code>SHOW TABLES;</code></td><td>Lister les tables de la base courante</td></tr>
-          <tr><td><code>DESCRIBE competences;</code></td><td>Voir la structure d'une table</td></tr>
-          <tr><td><code>sudo systemctl restart mariadb</code></td><td>Redémarrer le serveur</td></tr>
+          <tr><td><code>Get-Help Get-Service</code></td><td>Aide d'une commande</td></tr>
+          <tr><td><code>Get-Command *user*</code></td><td>Chercher une commande</td></tr>
+          <tr><td><code>Get-LocalUser</code></td><td>Lister les comptes locaux</td></tr>
+          <tr><td><code>Test-Connection 8.8.8.8</code></td><td>Équivalent du ping</td></tr>
         </tbody>
       </table>
+    </li>
+  </ol>
+</template>
 
-      <h3 class="proc-section-title">Bilan</h3>
-      <p>À compléter après l'installation : difficultés rencontrées, ce que j'ai appris, prochaines étapes (par exemple relier MariaDB à GLPI ou à un site PHP).</p>
-      <!-- ═════════ FIN DU CONTENU DE LA PROCÉDURE ═════════ -->
+<!-- ───── PYTHON ───── -->
+<template id="tpl-python">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Installer Python sur Debian</h4>
+      <pre class="proc-code"><code>sudo apt install python3 python3-pip python3-venv -y
+python3 --version</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Sur Windows : installateur sur <strong>python.org</strong>, en cochant <em>Add python.exe to PATH</em>.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Créer un environnement virtuel</h4>
+      <pre class="proc-code"><code>mkdir ~/python-sio &amp;&amp; cd ~/python-sio
+python3 -m venv venv
+source venv/bin/activate</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Premier script</h4>
+      <p>Créer <code>ping.py</code> :</p>
+      <pre class="proc-code"><code>import subprocess
 
-    </div>
-  </div>
-</div>
+machines = ["192.168.1.254", "8.8.8.8"]
+
+for ip in machines:
+    r = subprocess.run(["ping", "-c", "1", ip], capture_output=True)
+    if r.returncode == 0:
+        print(ip, "répond")
+    else:
+        print(ip, "ne répond pas")</code></pre>
+      <pre class="proc-code"><code>python3 ping.py</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── BASH ───── -->
+<template id="tpl-bash">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Créer le script</h4>
+      <p>Bash est déjà présent sur Debian. Créer un fichier :</p>
+      <pre class="proc-code"><code>nano sauvegarde.sh</code></pre>
+      <pre class="proc-code"><code>#!/bin/bash
+# Sauvegarde du dossier personnel avec la date
+DATE=$(date +%Y-%m-%d)
+DEST="/tmp/sauvegarde-$DATE.tar.gz"
+
+tar -czf "$DEST" "$HOME/Documents"
+
+if [ $? -eq 0 ]; then
+    echo "Sauvegarde OK : $DEST"
+else
+    echo "Erreur pendant la sauvegarde"
+fi</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Le rendre exécutable et le lancer</h4>
+      <pre class="proc-code"><code>chmod +x sauvegarde.sh
+./sauvegarde.sh</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>L'automatiser avec cron</h4>
+      <pre class="proc-code"><code>crontab -e</code></pre>
+      <pre class="proc-code"><code>0 18 * * * /home/daniella/sauvegarde.sh</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Lance le script tous les jours à 18h (minute, heure, jour, mois, jour de la semaine).</p>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── PACKET TRACER ───── -->
+<template id="tpl-packettracer">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Créer un compte Cisco NetAcad</h4>
+      <p>Packet Tracer est gratuit mais nécessite un compte <strong>Cisco Networking Academy</strong> (netacad.com). Le téléchargement se trouve dans la section <em>Resources → Download Packet Tracer</em>.</p>
+    </li>
+    <li class="proc-step">
+      <h4>Installer</h4>
+      <p><strong>Windows :</strong> lancer l'exécutable 64 bits.</p>
+      <p><strong>Debian / Ubuntu :</strong></p>
+      <pre class="proc-code"><code>cd ~/Téléchargements
+sudo apt install ./CiscoPacketTracer_*_amd64.deb -y</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Premier lancement</h4>
+      <p>Se connecter avec le compte NetAcad, puis glisser des équipements (routeurs, switchs, PC) et les relier avec l'outil <em>Connections</em>.</p>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Le mode <em>Simulation</em> permet de suivre un paquet étape par étape. Voir la fiche « Routage IP » pour un exemple complet.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── WIRESHARK ───── -->
+<template id="tpl-wireshark">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Installer</h4>
+      <pre class="proc-code"><code>sudo apt install wireshark -y</code></pre>
+      <p>À la question <em>« Les utilisateurs non privilégiés peuvent-ils capturer ? »</em>, répondre <strong>Oui</strong>, puis :</p>
+      <pre class="proc-code"><code>sudo usermod -aG wireshark $USER</code></pre>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Se déconnecter/reconnecter. Sur Windows : installateur sur wireshark.org (avec Npcap).</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Lancer une capture</h4>
+      <p>Choisir l'interface (ex. <code>enp0s3</code>), cliquer sur l'aileron bleu, générer du trafic (ping, site web), puis arrêter avec le carré rouge.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Filtrer</h4>
+      <table class="proc-table">
+        <thead><tr><th>Filtre</th><th>Affiche</th></tr></thead>
+        <tbody>
+          <tr><td><code>icmp</code></td><td>Les pings</td></tr>
+          <tr><td><code>dns</code></td><td>Les requêtes DNS</td></tr>
+          <tr><td><code>ip.addr == 192.168.1.10</code></td><td>Le trafic d'une machine</td></tr>
+          <tr><td><code>tcp.port == 80</code></td><td>Le HTTP</td></tr>
+          <tr><td><code>arp</code></td><td>Les requêtes ARP</td></tr>
+        </tbody>
+      </table>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── GITHUB ───── -->
+<template id="tpl-github">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Installer et configurer Git</h4>
+      <pre class="proc-code"><code>sudo apt install git -y
+git config --global user.name "Daniella NANA NYA"
+git config --global user.email "mon.email@exemple.com"</code></pre>
+    </li>
+    <li class="proc-step">
+      <h4>Créer une clé SSH et l'ajouter à GitHub</h4>
+      <pre class="proc-code"><code>ssh-keygen -t ed25519 -C "mon.email@exemple.com"
+cat ~/.ssh/id_ed25519.pub</code></pre>
+      <p>Copier la clé affichée dans GitHub → <em>Settings → SSH and GPG keys → New SSH key</em>.</p>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Envoyer mon portfolio sur GitHub</h4>
+      <p>Créer un dépôt vide sur github.com, puis dans le dossier du site :</p>
+      <pre class="proc-code"><code>git init
+git add .
+git commit -m "Premier commit du portfolio"
+git branch -M main
+git remote add origin git@github.com:MON-PSEUDO/portfolio.git
+git push -u origin main</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Mettre en ligne avec GitHub Pages</h4>
+      <p>Dans le dépôt : <em>Settings → Pages</em>, source <em>main</em> / dossier racine. Le site est publié sur <code>https://MON-PSEUDO.github.io/portfolio</code>.</p>
+      <p class="proc-tip"><i class="fas fa-lightbulb"></i> Ensuite, à chaque modification : <code>git add .</code> → <code>git commit -m "..."</code> → <code>git push</code>.</p>
+    </li>
+  </ol>
+</template>
+
+<!-- ───── VS CODE ───── -->
+<template id="tpl-vscode">
+  <ol class="proc-steps">
+    <li class="proc-step">
+      <h4>Télécharger et installer</h4>
+      <p>Sur <strong>code.visualstudio.com</strong> : installateur Windows, ou paquet <code>.deb</code> pour Debian :</p>
+      <pre class="proc-code"><code>cd ~/Téléchargements
+sudo apt install ./code_*_amd64.deb -y</code></pre>
+      <div class="proc-shot"></div>
+    </li>
+    <li class="proc-step">
+      <h4>Extensions utiles</h4>
+      <table class="proc-table">
+        <thead><tr><th>Extension</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>French Language Pack</td><td>Interface en français</td></tr>
+          <tr><td>Live Server</td><td>Prévisualiser mon portfolio en direct</td></tr>
+          <tr><td>Python</td><td>Exécuter et déboguer mes scripts</td></tr>
+          <tr><td>PowerShell</td><td>Coloration et exécution des .ps1</td></tr>
+          <tr><td>Remote - SSH</td><td>Éditer les fichiers d'une VM Linux à distance</td></tr>
+        </tbody>
+      </table>
+    </li>
+    <li class="proc-step">
+      <h4>Ouvrir un projet</h4>
+      <p><em>Fichier → Ouvrir le dossier</em>, puis <kbd>Ctrl</kbd>+<kbd>ù</kbd> pour le terminal intégré. L'onglet <em>Contrôle de code source</em> permet de faire les commits Git sans ligne de commande.</p>
+      <div class="proc-shot"></div>
+    </li>
+  </ol>
+</template>
 
 <footer>
   <div class="footer-bottom" style="padding:0 4%;">
@@ -578,7 +1063,6 @@ SELECT * FROM competences;</code></pre>
 </footer>
 
 <script>
-const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   document.getElementById('scrollProgress').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
 });
@@ -590,123 +1074,139 @@ function scrollRow(id, dir) {
 
 window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800));
 
-// ── Détail des compétences (au clic sur une carte) ──
-const skillModals = {
+// ══ En-têtes des procédures (titre, icône, intro, infos) ══
+// draft: true  → affiche le bandeau "Procédure prévisionnelle"
+const procs = {
   winserver: {
-    title: 'Windows Server',
-    meta: 'Systèmes',
-    icon: 'fab fa-windows',
-    desc: "Windows Server est le système d'exploitation utilisé pour administrer un réseau d'entreprise : il centralise l'authentification des utilisateurs, le partage de fichiers et d'imprimantes, et la distribution des règles de sécurité via Active Directory. Je m'en sers pour comprendre comment une organisation gère ses postes et ses comptes utilisateurs de façon centralisée.",
-    tags: ['Active Directory', 'Gestion des utilisateurs', 'Partage réseau']
-  },
-  glpi: {
-    title: 'GLPI',
-    meta: 'Systèmes · Gestion de parc',
-    icon: 'fas fa-print',
-    desc: "GLPI est un logiciel de gestion de parc informatique : il sert à faire l'inventaire du matériel, suivre les tickets d'incidents et gérer les demandes des utilisateurs. Je l'ai installé sur une machine virtuelle Linux, ce qui m'a permis de découvrir en plus le déploiement d'une application web (serveur + base de données).",
-    tags: ['Inventaire', 'Tickets', 'VM Linux']
+    tpl: 'winserver', title: 'Installer Windows Server', eyebrow: 'Compétence · Systèmes',
+    icon: 'fab fa-windows', color: '#0078D4',
+    intro: "Windows Server est le système d'exploitation utilisé pour administrer un réseau d'entreprise : il centralise l'authentification des utilisateurs, le partage de fichiers et d'imprimantes, et les règles de sécurité via Active Directory.",
+    meta: [['Système', 'Windows Server'], ['Support', 'VM VirtualBox'], ['Droits', 'Administrateur'], ['Durée', '~ 45 min']]
   },
   linux: {
-    title: 'Linux Debian & Ubuntu',
-    meta: 'Systèmes',
-    icon: 'fab fa-linux',
-    desc: "J'ai installé et administré Debian et Ubuntu en ligne de commande. Sur Ubuntu, j'ai mis en place une pile LAMP (Linux, Apache, MySQL, PHP) pour héberger un site et une base de données.",
-    tags: ['Debian 12', 'Ubuntu', 'LAMP', 'Apache', 'MySQL']
+    tpl: 'linux', title: 'Installer Linux Debian', eyebrow: 'Compétence · Systèmes',
+    icon: 'fab fa-linux', color: '#FCC624',
+    intro: "J'ai installé et administré Debian et Ubuntu en ligne de commande. Voici comment installer Debian dans une machine virtuelle.",
+    meta: [['Système', 'Debian 12 / 13'], ['Support', 'VM VirtualBox'], ['Droits', 'root / sudo'], ['Durée', '~ 30 min']]
+  },
+  glpi: {
+    tpl: 'glpi', title: 'Installer GLPI sur Debian', eyebrow: 'Compétence · Gestion de parc',
+    icon: 'fas fa-ticket-alt', color: '#ffa028',
+    intro: "GLPI est un logiciel de gestion de parc informatique : inventaire du matériel, tickets d'incidents et demandes des utilisateurs. Je l'ai installé sur une VM Linux, ce qui m'a aussi fait découvrir le déploiement d'une application web.",
+    meta: [['Système', 'Debian 12 / 13'], ['Pile', 'Apache · PHP · MariaDB'], ['Droits', 'sudo'], ['Durée', '~ 45 min']]
   },
   routage: {
-    title: 'Routage IP',
-    meta: 'Réseaux',
-    icon: 'fas fa-route',
-    desc: "Le routage permet de faire transiter des données d'un réseau à un autre. Ça se comprend avec le modèle OSI (voir la carte TCP/IP)",
-    tags: ['Modèle OSI', 'LAN', 'WAN', 'Table de routage']
+    tpl: 'routage', title: 'Routage statique', eyebrow: 'Compétence · Réseaux',
+    icon: 'fas fa-route', color: '#ffa028',
+    intro: "Le routage permet de faire transiter des données d'un réseau à un autre. Exemple pratique réalisé dans Packet Tracer avec deux routeurs Cisco.",
+    meta: [['Outil', 'Packet Tracer'], ['Matériel', '2 routeurs Cisco'], ['Couche OSI', '3 – Réseau'], ['Durée', '~ 30 min']]
   },
   tcpip: {
-    title: 'TCP/IP & DNS',
-    meta: 'Réseaux',
-    icon: 'fas fa-globe',
-    desc: "Le modèle OSI découpe la communication réseau en 7 couches : la couche physique transmet les signaux (câbles, ondes), la couche liaison gère l'adressage local et la détection d'erreurs (adresses MAC), la couche réseau s'occupe de l'adressage IP et du routage entre réseaux, la couche transport assure la fiabilité et le découpage des données (TCP/UDP), la couche session gère l'ouverture et la fermeture des échanges entre deux machines, la couche présentation met les données dans un format compréhensible (chiffrement, compression), et la couche application correspond aux logiciels utilisés par l'utilisateur (navigateur, mail...).",
-    tags: ['IPv4', 'IPv6', 'DNS']
-  },
-  pentest: {
-    title: 'Pentest basique',
-    meta: 'Sécurité',
-    icon: 'fas fa-user-secret',
-    desc: "Découverte du pentest à travers un Capture The Flag (CTF) réalisé en classe : recherche de failles simples sur des machines dédiées à l'exercice, analyse du trafic réseau avec Wireshark, premiers pas avec Kali Linux. Un aperçu pratique de la sécurité offensive, encore à un niveau débutant.",
-    tags: ['CTF', 'Wireshark', 'Kali Linux']
-  },
-  virtualbox: {
-    title: 'VirtualBox',
-    meta: 'Virtualisation',
-    icon: 'fas fa-box',
-    desc: "Installation et utilisation de machines virtuelles avec VirtualBox : création de VMs, gestion des ressources allouées (RAM, CPU, disque) et des réseaux virtuels. Une première approche concrète de la virtualisation.",
-    tags: ['VM', 'Snapshots', 'Réseau virtuel']
-  },
-  vmwindows: {
-    title: 'VM Windows',
-    meta: 'Virtualisation',
-    icon: 'fab fa-windows',
-    desc: "Création et configuration d'une machine virtuelle sous Windows avec VirtualBox, en parallèle des VMs Linux. Ça permet de tester des configurations sans toucher à la machine physique.",
-    tags: ['VM', 'Windows']
-  },
-  powershell: {
-    title: 'PowerShell',
-    meta: 'Scripting & Automatisation',
-    icon: 'fas fa-terminal',
-    desc: "Bases du scripting avec PowerShell vues en cours : syntaxe, variables, quelques commandes d'administration système. Niveau encore débutant, à approfondir.",
-    tags: ['Scripting', 'Bases']
-  },
-  python: {
-    title: 'Python',
-    meta: 'Scripting & Automatisation',
-    icon: 'fab fa-python',
-    desc: "Bases du langage Python vues en cours : variables, boucles, conditions, petites fonctions simples. Niveau encore débutant, à approfondir.",
-    tags: ['Scripting', 'Bases']
-  },
-  bash: {
-    title: 'Bash',
-    meta: 'Scripting & Automatisation',
-    icon: 'fas fa-terminal',
-    desc: "Bases du scripting Bash vues en cours, en lien avec l'administration Linux : quelques commandes et petits scripts simples. Niveau encore débutant, à approfondir.",
-    tags: ['Scripting', 'Bases']
-  },
-};
-
-function openSkill(key) {
-  const d = skillModals[key];
-  if (!d) return;
-  document.getElementById('skillModalTitle').textContent = d.title;
-  document.getElementById('skillModalMeta').textContent  = d.meta;
-  document.getElementById('skillModalDesc').textContent  = d.desc;
-  const bg = document.getElementById('skillModalBg');
-  bg.innerHTML = `<i class="${d.icon}" style="font-size:5rem;color:rgba(255,255,255,0.15);"></i>`;
-  const tagsEl = document.getElementById('skillModalTags');
-  tagsEl.innerHTML = d.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
-  document.getElementById('skillModalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeSkill(e) {
-  if (e && e.target !== document.getElementById('skillModalOverlay') && !e.target.classList.contains('modal-thumb-close') && !e.target.parentElement?.classList.contains('modal-thumb-close')) return;
-  document.getElementById('skillModalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// ── Grande bulle "Procédure" (MariaDB / SQL) ──
-const procIntros = {
-  mariadb: {
-    eyebrow: 'Outil · Bases de données',
-    intro: "MariaDB est un système de gestion de bases de données relationnelles (SGBDR), libre et compatible avec MySQL. Voici la procédure que j'ai suivie pour l'installer sur mon PC Debian."
+    tpl: 'tcpip', title: 'TCP/IP & DNS', eyebrow: 'Compétence · Réseaux',
+    icon: 'fas fa-globe', color: '#5599ff',
+    intro: "Le modèle OSI découpe la communication réseau en 7 couches. En pratique, configurer une adresse IP et un serveur DNS sur une machine permet de voir les couches 3 et 7 en action.",
+    meta: [['Système', 'Debian'], ['Protocoles', 'IPv4 · DNS'], ['Droits', 'sudo'], ['Durée', '~ 15 min']]
   },
   sql: {
-    eyebrow: 'Compétence · SQL',
-    intro: "Le SQL est le langage qui permet de créer, interroger et modifier des bases de données relationnelles. Pour le pratiquer, j'ai installé le serveur MariaDB sur mon PC Debian : voici ma procédure, jusqu'à mes premières requêtes."
+    tpl: 'mariadb', title: 'Pratiquer le SQL avec MariaDB', eyebrow: 'Compétence · SQL', draft: true,
+    icon: 'fas fa-table', color: '#C0765A',
+    intro: "Le SQL est le langage qui permet de créer, interroger et modifier des bases de données relationnelles. Pour le pratiquer, j'installe le serveur MariaDB sur mon PC Debian : voici ma procédure, jusqu'à mes premières requêtes.",
+    meta: [['Système', 'Debian 12 / 13'], ['Logiciel', 'MariaDB Server'], ['Droits', 'sudo'], ['Durée', '~ 15 min']]
+  },
+  mariadb: {
+    tpl: 'mariadb', title: 'Installer MariaDB sur Debian', eyebrow: 'Outil · Bases de données', draft: true,
+    icon: 'fas fa-database', color: '#C0765A',
+    intro: "MariaDB est un système de gestion de bases de données relationnelles (SGBDR), libre et compatible avec MySQL. Voici la procédure pour l'installer sur mon PC Debian.",
+    meta: [['Système', 'Debian 12 / 13'], ['Logiciel', 'MariaDB Server'], ['Droits', 'sudo'], ['Durée', '~ 15 min']]
+  },
+  pentest: {
+    tpl: 'pentest', title: 'Pentest : préparer Kali Linux', eyebrow: 'Compétence · Sécurité',
+    icon: 'fas fa-user-secret', color: '#5599ff',
+    intro: "Découverte du pentest à travers un Capture The Flag réalisé en classe : recherche de failles simples sur des machines dédiées, analyse du trafic avec Wireshark, premiers pas avec Kali Linux.",
+    meta: [['Système', 'Kali Linux'], ['Support', 'VM VirtualBox'], ['Cadre', 'CTF en classe'], ['Niveau', 'Débutant']]
+  },
+  virtualbox: {
+    tpl: 'virtualbox', title: 'Installer VirtualBox', eyebrow: 'Compétence · Virtualisation',
+    icon: 'fas fa-box', color: '#5f9bd1',
+    intro: "VirtualBox permet de faire tourner plusieurs systèmes (Windows, Linux) sur un même PC : création de VMs, gestion des ressources (RAM, CPU, disque) et des réseaux virtuels.",
+    meta: [['Hôte', 'Windows ou Debian'], ['Logiciel', 'Oracle VirtualBox 7'], ['Droits', 'Administrateur'], ['Durée', '~ 10 min']]
+  },
+  vmwindows: {
+    tpl: 'vmwindows', title: 'Créer une VM Windows', eyebrow: 'Compétence · Virtualisation',
+    icon: 'fab fa-windows', color: '#0078D4',
+    intro: "Une machine virtuelle Windows permet de tester des configurations sans toucher à la machine physique.",
+    meta: [['Système', 'Windows 10 / 11'], ['Support', 'VirtualBox 7'], ['RAM', '4 Go min.'], ['Durée', '~ 40 min']]
+  },
+  powershell: {
+    tpl: 'powershell', title: 'Débuter avec PowerShell', eyebrow: 'Compétence · Scripting',
+    icon: 'fas fa-terminal', color: '#2671BE',
+    intro: "Bases du scripting PowerShell vues en cours : syntaxe, variables, quelques commandes d'administration système. Niveau débutant, à approfondir.",
+    meta: [['Système', 'Windows'], ['Version', '5.1 / 7'], ['Extension', '.ps1'], ['Niveau', 'Débutant']]
+  },
+  python: {
+    tpl: 'python', title: 'Débuter avec Python', eyebrow: 'Compétence · Scripting',
+    icon: 'fab fa-python', color: '#3572A5',
+    intro: "Bases du langage Python vues en cours : variables, boucles, conditions, petites fonctions. Niveau débutant, à approfondir.",
+    meta: [['Système', 'Debian / Windows'], ['Version', 'Python 3'], ['Extension', '.py'], ['Niveau', 'Débutant']]
+  },
+  bash: {
+    tpl: 'bash', title: 'Débuter avec Bash', eyebrow: 'Compétence · Scripting',
+    icon: 'fas fa-terminal', color: '#89e051',
+    intro: "Bases du scripting Bash en lien avec l'administration Linux : quelques commandes et petits scripts simples. Niveau débutant, à approfondir.",
+    meta: [['Système', 'Debian'], ['Shell', 'Bash'], ['Extension', '.sh'], ['Niveau', 'Débutant']]
+  },
+  packettracer: {
+    tpl: 'packettracer', title: 'Installer Cisco Packet Tracer', eyebrow: 'Outil · Réseaux',
+    icon: 'fas fa-network-wired', color: '#E50914',
+    intro: "Packet Tracer est le simulateur réseau de Cisco : il permet de construire et tester des maquettes (routeurs, switchs, PC) sans matériel physique.",
+    meta: [['Système', 'Windows / Debian'], ['Éditeur', 'Cisco'], ['Compte', 'NetAcad requis'], ['Durée', '~ 10 min']]
+  },
+  wireshark: {
+    tpl: 'wireshark', title: 'Installer et utiliser Wireshark', eyebrow: 'Outil · Analyse réseau',
+    icon: 'fas fa-eye', color: '#1679A8',
+    intro: "Wireshark capture et décode les paquets qui passent sur une carte réseau : idéal pour comprendre les protocoles et diagnostiquer un problème.",
+    meta: [['Système', 'Debian / Windows'], ['Licence', 'Libre'], ['Droits', 'groupe wireshark'], ['Durée', '~ 5 min']]
+  },
+  github: {
+    tpl: 'github', title: 'Git & GitHub', eyebrow: 'Outil · Versionnage',
+    icon: 'fab fa-git-alt', color: '#F05032',
+    intro: "Git garde l'historique de mes fichiers et GitHub les héberge en ligne. Je m'en sers pour sauvegarder et publier ce portfolio.",
+    meta: [['Système', 'Debian / Windows'], ['Outil', 'Git'], ['Hébergement', 'GitHub Pages'], ['Durée', '~ 15 min']]
+  },
+  vscode: {
+    tpl: 'vscode', title: 'Installer VS Code', eyebrow: 'Outil · Éditeur de code',
+    icon: 'fas fa-code-branch', color: '#3fa9f5',
+    intro: "Visual Studio Code est l'éditeur que j'utilise pour mon portfolio (HTML/CSS/JS) et mes scripts PowerShell, Python et Bash.",
+    meta: [['Système', 'Debian / Windows'], ['Éditeur', 'Microsoft'], ['Licence', 'Gratuit'], ['Durée', '~ 5 min']]
   }
 };
 
 function openProc(key) {
-  const d = procIntros[key] || procIntros.mariadb;
+  const d = procs[key];
+  if (!d) return;
+  document.getElementById('procTitle').textContent   = d.title;
   document.getElementById('procEyebrow').textContent = d.eyebrow;
   document.getElementById('procIntro').textContent   = d.intro;
+  const icon = document.getElementById('procIcon');
+  icon.innerHTML = `<i class="${d.icon}"></i>`;
+  icon.style.color = d.color;
+  icon.style.background = d.color + '2e';
+  document.getElementById('procNotice').classList.toggle('hidden', !d.draft);
+  document.getElementById('procMeta').innerHTML =
+    d.meta.map(([l, v]) => `<div><span>${l}</span><strong>${v}</strong></div>`).join('');
+
+  const content = document.getElementById('procContent');
+  content.innerHTML = '';
+  content.appendChild(document.getElementById('tpl-' + d.tpl).content.cloneNode(true));
+  content.querySelectorAll('pre.proc-code').forEach(pre => {
+    const b = document.createElement('button');
+    b.className = 'copy-btn';
+    b.title = 'Copier';
+    b.innerHTML = '<i class="far fa-copy"></i>';
+    b.onclick = () => copyCode(b);
+    pre.prepend(b);
+  });
+
   document.getElementById('procBody').scrollTop = 0;
   document.getElementById('procOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -726,14 +1226,8 @@ function copyCode(btn) {
   });
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.getElementById('skillModalOverlay').classList.remove('open');
-    closeProc();
-  }
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProc(); });
 
-// Animate skill bars on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
